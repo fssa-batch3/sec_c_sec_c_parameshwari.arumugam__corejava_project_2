@@ -52,7 +52,7 @@ public class CreateProductDao {
 
 		try {
 
-			String query = "UPDATE Product SET name = ? , url = ? , price = ? , category = ? WHERE id = ?";
+			String query = "UPDATE product SET name = ? , url = ? , price = ? , category = ? WHERE id = ?";
 			con = ConnectionUtil.getConnection();
 
 			PreparedStatement pst = con.prepareStatement(query);
@@ -139,10 +139,10 @@ public class CreateProductDao {
 
 //		Product p2 = new Product();
 //
-//		p2.setProductId(3);
-//		p2.setProductName("Red Bouquet with Black forestCake");
+//		p2.setProductId(4);
+//		p2.setProductName("Love Bouquet");
 //		p2.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-//		p2.setProductPrice(1600);
+//		p2.setProductPrice(500);
 //		p2.setProductCatagory("Anniversary Bouquet with Cake");
 //
 //		updateProduct(p2);

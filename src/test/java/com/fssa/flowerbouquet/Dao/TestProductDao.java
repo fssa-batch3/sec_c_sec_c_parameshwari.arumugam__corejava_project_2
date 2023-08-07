@@ -57,7 +57,7 @@ public class TestProductDao {
 	@Test
 	public void testValidUpdateProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.updateProduct(validProduct()));
-	}
+	} 
 
 	// Test the deleteProduct method with a valid Product ID
 	@Test

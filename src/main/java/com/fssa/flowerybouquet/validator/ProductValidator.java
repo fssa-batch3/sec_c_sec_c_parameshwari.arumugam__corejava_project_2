@@ -16,7 +16,7 @@ public class ProductValidator {
 		validateProductId(Product.getProductId());
 		productNameValidator(Product.getProductName());
 		productImageValidator(Product.getProductImageURL());
-		productPriceValidator(Product.getProductPrice());
+		productPriceValidator(Product.getProductPrice()); 
 
 		return true;
 

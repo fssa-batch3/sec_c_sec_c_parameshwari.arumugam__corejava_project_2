@@ -11,7 +11,7 @@ import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class TestProductService {
- 
+
 	public Product getProduct() {
 
 		Product product = new Product(
@@ -20,10 +20,10 @@ public class TestProductService {
 		return product;
 
 	}
- 
+
 	public Product getProduct1() {
 
-		Product product = new Product(3, "RedroseBouquet", "https://iili.io/Hijmt2a.jpg", 1900,
+		Product product = new Product(4, "RedroseBouquet", "https://iili.io/Hijmt2a.jpg", 800,
 				"Anniversary Bouquet with Cake");
 		return product;
 

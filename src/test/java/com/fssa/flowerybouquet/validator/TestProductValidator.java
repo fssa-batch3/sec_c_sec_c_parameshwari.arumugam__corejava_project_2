@@ -7,7 +7,7 @@ import com.fssa.flowerybouquet.dao.InvalidCategoryException;
 import com.fssa.flowerybouquet.model.Product;
 
 public class TestProductValidator {
-
+ 
 	Product product = new Product(1, "RedRoseBouquet", "https://iili.io/Hijmt2a.jpg", 1000.0, "Anniversary");
 
 	// Product object valide.
