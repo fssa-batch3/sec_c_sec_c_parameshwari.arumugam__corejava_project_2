@@ -5,16 +5,16 @@ public class Product {
 	private int productId;
 	private String productName;
 	private String productImageURL;
-	private double productPrice; 
+	private double productPrice;
 	private String productCatagory;
 //	private float productRatings;
 
-	public Product(String productName, String productImageURL, double productPrice, String productCatagory ) {
+	public Product(String productName, String productImageURL, double productPrice, String productCatagory) {
 
 		this.productName = productName;
 		this.productImageURL = productImageURL;
 		this.productPrice = productPrice;
-		this.productCatagory = productCatagory; 
+		this.productCatagory = productCatagory;
 //		this.productRatings = productRatings; 
 
 	}
@@ -31,6 +31,8 @@ public class Product {
 
 	}
 
+	//Default Constructor
+	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,7 +64,7 @@ public class Product {
 	public double getProductPrice() {
 		return productPrice;
 	}
- 
+
 	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}

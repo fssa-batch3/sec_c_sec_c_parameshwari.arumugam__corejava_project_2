@@ -15,7 +15,7 @@ public class CreateProductDao {
 	public static boolean addProduct(Product product) throws DAOException, SQLException {
 
 		Connection con = null;
-
+ 
 		try {
 
 			String query = "INSERT INTO product (id, name, url, price, category) VALUES (?, ?, ?, ?, ?)";
@@ -23,7 +23,7 @@ public class CreateProductDao {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 
 			preparedStatement.setInt(1, (product.getProductId()));
-			preparedStatement.setString(2, product.getProductName());
+			preparedStatement.setString(2, product.getProductName()); 
 			preparedStatement.setString(3, product.getProductImageURL());
 			preparedStatement.setDouble(4, (product.getProductPrice()));
 			preparedStatement.setString(5, product.getProductCatagory());
@@ -82,7 +82,7 @@ public class CreateProductDao {
 
 		Connection con = null;
 
-		try { 
+		try {
 
 			String query = "DELETE FROM product WHERE id = ?";
 			con = ConnectionUtil.getConnection();
@@ -121,7 +121,7 @@ public class CreateProductDao {
 			throw new SQLException("Get All Product Details Method Is Failded");
 		}
 
-		return true;
+		return true; 
 	}
 
 	// main method
@@ -132,8 +132,8 @@ public class CreateProductDao {
 //
 //		p1.setProductName("Love Bouquet");
 //		p1.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-//		p1.setProductPrice(900);
-//		p1.setProductCatagory("Birthday Bouquet");
+//		p1.setProductPrice(500);
+//		p1.setProductCatagory("Yellow Bouquet");
 //
 //		addProduct(p1);
 
@@ -147,9 +147,9 @@ public class CreateProductDao {
 //
 //		updateProduct(p2);
 
-//      deleteProduct(7);
+//      deleteProduct(18);
 
-		getAllProductDetails();
+//		getAllProductDetails(); 
 
 	}
 }

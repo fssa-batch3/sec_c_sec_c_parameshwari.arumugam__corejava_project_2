@@ -8,7 +8,7 @@ import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class ProductService {
-   
+
 	private ProductValidator productvalidator;
 	private CreateProductDao createproductdao;
 
@@ -21,29 +21,30 @@ public class ProductService {
 	public ProductService() {
 
 	}
-	 
-	
+
 	public boolean addProduct(Product product) throws DAOException, SQLException {
 		if (this.productvalidator.validate(product)) {
 			this.createproductdao.addProduct(product);
-		}  
-			return true;
-		
+		}
+		return true;
+
 	}
+
 	public boolean updateProduct(Product product) throws DAOException, SQLException {
 		if (this.productvalidator.validate(product)) {
-		 this.createproductdao.updateProduct(product);
-		} 
-			return true;
-		 
+			this.createproductdao.updateProduct(product);
+		}
+		return true;
+
 	}
+
 	public boolean deleteProduct(int ProductId) throws DAOException, SQLException {
 		ProductValidator productvalidate = new ProductValidator();
 		if (productvalidate.validateProductId(ProductId)) {
-			 this.createproductdao.deleteProduct(ProductId);
-		} 
-			return true;
-		
+			this.createproductdao.deleteProduct(ProductId);
+		}
+		return true;
+
 	}
 
 	public boolean getAllProductDetails() throws DAOException, SQLException {
@@ -51,5 +52,5 @@ public class ProductService {
 		createproductdao.getAllProductDetails();
 		return true;
 	}
-	
+
 }

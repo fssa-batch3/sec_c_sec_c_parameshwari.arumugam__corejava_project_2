@@ -12,7 +12,7 @@ public class TestProductValidator {
 
 	// Product object valide.
 	@Test
-	public void testValidProduct() {
+	public void testValidProduct() { 
 		Assertions.assertTrue(ProductValidator.validate(product));
 	}
 

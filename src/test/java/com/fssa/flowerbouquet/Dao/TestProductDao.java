@@ -16,9 +16,22 @@ public class TestProductDao {
 	public static Product validProduct() {
 
 		Product product = new Product();
-		product.setProductId(2); 
-		product.setProductName("Red Rose Bouquet");
-		product.setProductPrice(510.0);
+		product.setProductId(3);
+		product.setProductName("Red Bouquet with Black forestCake");
+		product.setProductPrice(1700.0);
+		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
+		product.setProductCatagory("Anniversary Bouquet with Cake");
+
+		return product;
+ 
+	}
+
+	public static Product validProduct1() {
+
+		Product product = new Product();
+
+		product.setProductName("Red Rose Bouquet"); 
+		product.setProductPrice(800.0);
 		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
 		product.setProductCatagory("Anniversary");
 
@@ -37,7 +50,7 @@ public class TestProductDao {
 	// Test the addProduct method with a valid Product
 	@Test
 	public void testValidAddProduct() throws SQLException, DAOException {
-		Assertions.assertTrue(CreateProductDao.addProduct(validProduct()));
+		Assertions.assertTrue(CreateProductDao.addProduct(validProduct1()));
 	}
 
 	// Test the updateProduct method with a valid Product
@@ -68,7 +81,7 @@ public class TestProductDao {
 			Assertions.assertEquals("Add Product Method is Failed", ex.getMessage());
 		}
 
-	} 
+	}
 
 	// Test the update method with an invalid Product
 	@Test
@@ -80,7 +93,7 @@ public class TestProductDao {
 		} catch (InvalidCategoryException ex) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCTID, ex.getMessage());
 
-		}
+		} 
 	}
 
 	// Test the Delete method with an invalid Product

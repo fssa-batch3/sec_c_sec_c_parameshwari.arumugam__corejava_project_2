@@ -11,28 +11,24 @@ import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class TestProductService {
-   
+ 
 	public Product getProduct() {
 
 		Product product = new Product(
-				
-				"RedroseBouquet", 
-				"https://iili.io/Hijmt2a.jpg",
-				1800, 
-				"Anniversary Bouquet with Cake");
+
+				"Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
 		return product;
 
 	}
  
 	public Product getProduct1() {
 
-		Product product = new Product(1, "RedroseBouquet", "https://iili.io/Hijmt2a.jpg", 1800,
+		Product product = new Product(3, "RedroseBouquet", "https://iili.io/Hijmt2a.jpg", 1900,
 				"Anniversary Bouquet with Cake");
 		return product;
 
 	}
 
-	@Test
 	public ProductService getProductService() {
 
 		ProductValidator productValidator = new ProductValidator();
@@ -44,8 +40,16 @@ public class TestProductService {
 
 	@Test
 
+	public void testAddProduct() throws DAOException, SQLException {
+		Product product = getProduct1();
+		ProductService productService = getProductService();
+		Assertions.assertTrue(productService.addProduct(product));
+	}
+
+	@Test
+
 	public void testUpdateProduct() throws DAOException, SQLException {
-		Product product =  getProduct1();
+		Product product = getProduct1();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.updateProduct(product));
 	}
@@ -54,7 +58,7 @@ public class TestProductService {
 
 	public void testDeleteProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
-		ProductService productService =  getProductService();
+		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.deleteProduct(1));
 	}
 
@@ -65,5 +69,5 @@ public class TestProductService {
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.getAllProductDetails());
 	}
-	
+
 }
