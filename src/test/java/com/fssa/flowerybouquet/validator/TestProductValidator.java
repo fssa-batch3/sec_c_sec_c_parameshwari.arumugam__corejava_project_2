@@ -20,7 +20,7 @@ public class TestProductValidator {
 
 	@Test
 	public void testProductValidator() {
-
+ 
 		try {
  
 			ProductValidator.validate(null);

@@ -19,12 +19,12 @@ public class ProductService {
 	}
 
 	public ProductService() {
-
+ 
 	}
 
 	public boolean addProduct(Product product) throws DAOException, SQLException {
 		if (this.productvalidator.validate(product)) {
-			this.createproductdao.addProduct(product);
+			this.createproductdao.addProduct(product); 
 		}
 		return true;
 

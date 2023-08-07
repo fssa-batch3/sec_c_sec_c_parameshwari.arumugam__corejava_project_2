@@ -36,12 +36,12 @@ public class TestProductService {
 		ProductService productService = new ProductService(productValidator, createproductdao);
 		return productService;
 
-	}
+	} 
 
 	@Test
 
 	public void testAddProduct() throws DAOException, SQLException {
-		Product product = getProduct1();
+		Product product = getProduct();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.addProduct(product));
 	}

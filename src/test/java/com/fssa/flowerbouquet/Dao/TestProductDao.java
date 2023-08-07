@@ -88,7 +88,7 @@ public class TestProductDao {
 	public void testInvalidUpdateAppointment() throws SQLException, DAOException {
 		try {
 			Product product = new Product();
-			product.setProductId(-1);
+			product.setProductId(-1);  
 			CreateProductDao.updateProduct(product);
 		} catch (InvalidCategoryException ex) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCTID, ex.getMessage());
