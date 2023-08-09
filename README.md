@@ -1,6 +1,6 @@
-Database Design - Flowery_Bouquet
+## Database Design - Flowery_Bouquet
 
-Table: user
+## Table: user
 
 | Column    | Data Type        | Constraints      |
 |-----------|------------------|------------------|
