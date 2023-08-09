@@ -15,7 +15,7 @@ public class CreateProductDao {
 	public static boolean addProduct(Product product) throws DAOException, SQLException {
 
 		Connection con = null;
- 
+  
 		try {
 
 			String query = "INSERT INTO product (id, name, url, price, category) VALUES (?, ?, ?, ?, ?)";
@@ -147,7 +147,7 @@ public class CreateProductDao {
 //
 //		updateProduct(p2);
 
-//      deleteProduct(18);
+//      deleteProduct(4);
 
 //		getAllProductDetails(); 
 
