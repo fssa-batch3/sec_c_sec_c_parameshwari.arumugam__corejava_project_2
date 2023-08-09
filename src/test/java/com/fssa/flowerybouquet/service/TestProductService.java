@@ -10,7 +10,7 @@ import com.fssa.flowerybouquet.dao.DAOException;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
-public class TestProductService {
+class TestProductService {
 
 	public Product getProduct() {
 

@@ -11,7 +11,7 @@ import com.fssa.flowerybouquet.dao.InvalidCategoryException;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
-public class TestProductDao {
+class TestProductDao {
 
 	public static Product validProduct() {
 
@@ -47,7 +47,7 @@ public class TestProductDao {
 
 	}
 
-	// Test the addProduct method with a valid Product
+	// Test the addProduct method with a valid Product 
 	@Test
 	void testValidAddProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.addProduct(validProduct1()));

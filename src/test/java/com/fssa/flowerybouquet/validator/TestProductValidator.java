@@ -21,7 +21,7 @@ public class TestProductValidator {
 	
 	@Test
 	 void testProductValidator() {
- 
+  
 		try {
  
 			ProductValidator.validate(null);

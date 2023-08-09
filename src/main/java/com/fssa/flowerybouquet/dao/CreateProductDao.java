@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
@@ -28,7 +29,7 @@ public class CreateProductDao {
 			preparedStatement.setDouble(4, (product.getProductPrice()));
 			preparedStatement.setString(5, product.getProductCatagory());
 			preparedStatement.executeUpdate();
-			System.out.println("Product Added");
+			Logger.info("Product Added");
 		} catch (SQLException ex) { 
 //			ex.printStackTrace();
 			throw new DAOException("Add Product Method is Failed");
@@ -62,7 +63,7 @@ public class CreateProductDao {
 			pst.setDouble(3, (product.getProductPrice()));
 			pst.setString(4, product.getProductCatagory());
 			pst.executeUpdate();
-			System.out.println("Product Update");
+			Logger.info("Product Update");
 		} catch (SQLException e) {
 			throw new DAOException("Error Updating product: ", e);
 		} finally {
@@ -90,7 +91,7 @@ public class CreateProductDao {
 			PreparedStatement pt = con.prepareStatement(query);
 			pt.setInt(1, productId);
 			pt.executeUpdate();
-			System.out.println("Product Deleted");
+			Logger.info("Product Deleted");
 		} catch (SQLException e) {
 			throw new DAOException("Error Deleting product: ", e);
 		} finally {
@@ -109,15 +110,15 @@ public class CreateProductDao {
 			try (Statement st = con.createStatement()) {
 				try (ResultSet rs = st.executeQuery(query)) {
 					while (rs.next()) {
-						System.out.println("ID:" + rs.getInt("id") + ",Name :" + rs.getString("name") + ",Price :"
+						Logger.info("ID:" + rs.getInt("id") + ",Name :" + rs.getString("name") + ",Price :"
 								+ rs.getDouble("price") + ",URL :" + rs.getString("url") + ",Category :"
 								+ rs.getString("category"));
 					}
-					System.out.println("Got All Product Details Successfully");
+					Logger.info("Got All Product Details Successfully");
 				}
 			}
 		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
+			Logger.info(ex.getMessage());
 			throw new SQLException("Get All Product Details Method Is Failded");
 		}
 
