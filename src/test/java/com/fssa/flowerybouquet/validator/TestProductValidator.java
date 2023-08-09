@@ -12,14 +12,15 @@ public class TestProductValidator {
 
 	// Product object valide.
 	@Test
-	public void testValidProduct() { 
+	 void testValidProduct() { 
 		Assertions.assertTrue(ProductValidator.validate(product));
 	}
 
 	// Product object Invalide.
-
+ 
+	
 	@Test
-	public void testProductValidator() {
+	 void testProductValidator() {
  
 		try {
  
@@ -33,14 +34,14 @@ public class TestProductValidator {
 
 	@Test
 
-	public void testValidProductId() {
+	 void testValidProductId() {
 		int productId = 55; // valid product id
 		Assertions.assertTrue(ProductValidator.validateProductId(productId));
 	}
 
 	@Test
 
-	public void testInValidProductId() {
+	 void testInValidProductId() {
 		try {
 			int productId = -5; // Invalid product id
 			ProductValidator.validateProductId(productId);
@@ -52,14 +53,14 @@ public class TestProductValidator {
 	// product validname validator.
 
 	@Test
-	public void testValidName() {
+	 void testValidName() {
 		Assertions.assertTrue(ProductValidator.productNameValidator("RedRoseBouquet"));
 	}
 
 	// product invalidname validator.
 
 	@Test
-	public void testInvalidName() {
+	 void testInvalidName() {
 
 		try {
 
@@ -83,14 +84,14 @@ public class TestProductValidator {
 	// product validImage validator.
 
 	@Test
-	public void testValidIamge() {
+	 void testValidIamge() {
 		Assertions.assertTrue(ProductValidator.productImageValidator("https://iili.io/HZHkOzl.jpg"));
 	}
 
 	// product InvalidImage validator.
 
 	@Test
-	public void testInvalidIamge() {
+	 void testInvalidIamge() {
 		try {
 			ProductValidator.productImageValidator("https://iili.io/HZHkOzl.https");
 			Assertions.fail("Validate image failed");
@@ -111,13 +112,13 @@ public class TestProductValidator {
 
 	// product validPrice validator.
 	@Test
-	public void testValidPrice() {
+	 void testValidPrice() {
 		Assertions.assertTrue(ProductValidator.productPriceValidator(501));
 	}
 	// product InvalidPrice validator.
 
 	@Test
-	public void testInvalidPrice() {
+	 void testInvalidPrice() {
 		try {
 			ProductValidator.productPriceValidator(100);
 			Assertions.fail("Validateprice failed");
@@ -127,7 +128,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testCategory() {
+	 void testCategory() {
 
 		String mainCategory = "Anniversary";
 		Assertions.assertTrue(EnumsValidator.isValidMainCategory(mainCategory));
@@ -141,7 +142,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testInvalidCategory() {
+	 void testInvalidCategory() {
 
 		try {
 			EnumsValidator.isValidMainCategory(null);
@@ -160,7 +161,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testAnniversaryCategory() {
+	 void testAnniversaryCategory() {
 
 		Product p = new Product();
 		p.setProductCatagory("Bouquet with cake");
@@ -170,7 +171,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testInvalidAnniversayCategory() {
+	 void testInvalidAnniversayCategory() {
 
 		try {
 			EnumsValidator.isValidAnniversaryCategory(null);
@@ -189,7 +190,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testBirthdayCategory() {
+	 void testBirthdayCategory() {
 
 		String birthdayCategory = "Bouquet";
 		Assertions.assertTrue(EnumsValidator.isValidBirthdayCategory(birthdayCategory));
@@ -197,7 +198,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testInvalidBirthdayCategory() {
+	 void testInvalidBirthdayCategory() {
 
 		try {
 			EnumsValidator.isValidBirthdayCategory(null);
@@ -216,7 +217,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testFlowersCategory() {
+	 void testFlowersCategory() {
 
 		String flowersCategory = "Red bouquet";
 		Assertions.assertTrue(EnumsValidator.isValidFlowersCategory(flowersCategory));
@@ -224,7 +225,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	public void testInvalidFlowersCategory() {
+	 void testInvalidFlowersCategory() {
 
 		try {
 			EnumsValidator.isValidFlowersCategory(null);
@@ -244,7 +245,7 @@ public class TestProductValidator {
 
 	// Validate Getter and Setters
 	@Test
-	public void testValidProductUsingGtAndSt() {
+	 void testValidProductUsingGtAndSt() {
 		Product p = new Product();
 		p.setProductId(1);
 		p.setProductName("RedRoseBouquet");

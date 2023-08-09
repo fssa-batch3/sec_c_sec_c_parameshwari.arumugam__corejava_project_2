@@ -18,7 +18,7 @@ public class TestProductService {
 
 				"Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
 		return product;
-
+ 
 	}
  
 	public Product getProduct1() {
@@ -40,7 +40,7 @@ public class TestProductService {
 
 	@Test
 
-	public void testAddProduct() throws DAOException, SQLException {
+	 void testAddProduct() throws DAOException, SQLException {
 		Product product = getProduct();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.addProduct(product));
@@ -48,7 +48,7 @@ public class TestProductService {
 
 	@Test
 
-	public void testUpdateProduct() throws DAOException, SQLException {
+	 void testUpdateProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.updateProduct(product));
@@ -56,7 +56,7 @@ public class TestProductService {
 
 	@Test
 
-	public void testDeleteProduct() throws DAOException, SQLException {
+	 void testDeleteProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.deleteProduct(1));
@@ -64,7 +64,7 @@ public class TestProductService {
 
 	@Test
 
-	public void testgetAllProductDetails() throws DAOException, SQLException {
+	 void testgetAllProductDetails() throws DAOException, SQLException {
 		Product product = getProduct();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.getAllProductDetails());

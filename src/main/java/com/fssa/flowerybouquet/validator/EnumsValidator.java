@@ -6,8 +6,8 @@ import com.fssa.flowerybouquet.enums.BirthdayBouquetCatagory;
 import com.fssa.flowerybouquet.enums.FlowersCatagory;
 import com.fssa.flowerybouquet.enums.ProductCategory;
 
-public class EnumsValidator {  
-  
+public class EnumsValidator {
+
 	public static boolean isValidMainCategory(String mainCategory) throws InvalidCategoryException {
 		if (mainCategory == null) {
 			throw new InvalidCategoryException(ProductValidatorError.INVALID_MAIN_PRODUCTCATEGORY_NULL);
@@ -16,8 +16,8 @@ public class EnumsValidator {
 		for (ProductCategory category : ProductCategory.values()) {
 			if (category.getMainCategory().equalsIgnoreCase(mainCategory)) {
 				return true;
-			} 
-		}
+			}
+		} 
 
 		throw new InvalidCategoryException(ProductValidatorError.INVALID_MAIN_PRODUCTCATEGORY);
 	}
@@ -44,7 +44,7 @@ public class EnumsValidator {
 		for (BirthdayBouquetCatagory birthCategory : BirthdayBouquetCatagory.values()) {
 			if (birthCategory.getBirthdayBouquetCatagory().equalsIgnoreCase(birthdayCategory)) {
 				return true;
-			} 
+			}
 		}
 
 		throw new InvalidCategoryException(ProductValidatorError.INVALID_BIRTHDAY_PRODUCTCATEGORY);

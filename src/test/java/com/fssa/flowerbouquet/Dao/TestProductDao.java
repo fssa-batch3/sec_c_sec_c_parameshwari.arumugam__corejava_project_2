@@ -23,14 +23,14 @@ public class TestProductDao {
 		product.setProductCatagory("Anniversary Bouquet with Cake");
 
 		return product;
- 
+
 	}
 
 	public static Product validProduct1() {
 
 		Product product = new Product();
 
-		product.setProductName("Red Rose Bouquet"); 
+		product.setProductName("Red Rose Bouquet");
 		product.setProductPrice(800.0);
 		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
 		product.setProductCatagory("Anniversary");
@@ -49,32 +49,32 @@ public class TestProductDao {
 
 	// Test the addProduct method with a valid Product
 	@Test
-	public void testValidAddProduct() throws SQLException, DAOException {
+	void testValidAddProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.addProduct(validProduct1()));
 	}
 
 	// Test the updateProduct method with a valid Product
 	@Test
-	public void testValidUpdateProduct() throws SQLException, DAOException {
+	void testValidUpdateProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.updateProduct(validProduct()));
-	} 
+	}
 
 	// Test the deleteProduct method with a valid Product ID
 	@Test
-	public void testValidDeleteProduct() throws SQLException, DAOException {
+	void testValidDeleteProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.deleteProduct(validProduct().getProductId()));
 	}
 
 	// Test the getAllProductDetails method to get all product details
 	@Test
-	public void testValidGetProductDetails() throws SQLException, DAOException {
+	void testValidGetProductDetails() throws SQLException, DAOException {
 		TestProductDao pd = new TestProductDao();
 		Assertions.assertTrue(CreateProductDao.getAllProductDetails());
 	}
 
 	// Test the addProduct method with an invalid Product
 	@Test
-	public void testInvalidAddProduct() throws SQLException, DAOException {
+	void testInvalidAddProduct() throws SQLException, DAOException {
 		try {
 			CreateProductDao.addProduct(InvalidProduct());
 		} catch (DAOException ex) {
@@ -85,20 +85,20 @@ public class TestProductDao {
 
 	// Test the update method with an invalid Product
 	@Test
-	public void testInvalidUpdateAppointment() throws SQLException, DAOException {
+	void testInvalidUpdateAppointment() throws SQLException, DAOException {
 		try {
 			Product product = new Product();
-			product.setProductId(-1);  
+			product.setProductId(-1);
 			CreateProductDao.updateProduct(product);
 		} catch (InvalidCategoryException ex) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCTID, ex.getMessage());
 
-		} 
+		}
 	}
 
 	// Test the Delete method with an invalid Product
 	@Test
-	public void testInvalidDeletAppointment() throws SQLException, DAOException {
+	void testInvalidDeletAppointment() throws SQLException, DAOException {
 		try {
 			CreateProductDao.deleteProduct(InvalidProduct().getProductId());
 		} catch (InvalidCategoryException ex) {
