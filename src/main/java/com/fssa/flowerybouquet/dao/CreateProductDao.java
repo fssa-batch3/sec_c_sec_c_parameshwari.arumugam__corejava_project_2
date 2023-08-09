@@ -16,7 +16,7 @@ public class CreateProductDao {
 	public static boolean addProduct(Product product) throws DAOException, SQLException {
 
 		Connection con = null;
-  
+   
 		try {
 
 			String query = "INSERT INTO product (id, name, url, price, category) VALUES (?, ?, ?, ?, ?)";
@@ -125,32 +125,5 @@ public class CreateProductDao {
 		return true; 
 	}
 
-	// main method
-
-	public static void main(String[] args) throws DAOException, SQLException {
-
-//		Product p1 = new Product();
-//
-//		p1.setProductName("Love Bouquet");
-//		p1.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-//		p1.setProductPrice(500);
-//		p1.setProductCatagory("Yellow Bouquet");
-//
-//		addProduct(p1);
-
-//		Product p2 = new Product();
-//
-//		p2.setProductId(4);
-//		p2.setProductName("Love Bouquet");
-//		p2.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-//		p2.setProductPrice(500);
-//		p2.setProductCatagory("Anniversary Bouquet with Cake");
-//
-//		updateProduct(p2);
-
-//      deleteProduct(4);
-
-//		getAllProductDetails(); 
-
-	}
+	
 }

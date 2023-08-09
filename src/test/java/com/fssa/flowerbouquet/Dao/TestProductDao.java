@@ -93,9 +93,9 @@ class TestProductDao {
 		} catch (InvalidCategoryException ex) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCTID, ex.getMessage());
 
-		}
+		} 
 	}
-
+ 
 	// Test the Delete method with an invalid Product
 	@Test
 	void testInvalidDeletAppointment() throws SQLException, DAOException {

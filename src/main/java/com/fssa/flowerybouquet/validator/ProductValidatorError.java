@@ -1,6 +1,6 @@
 package com.fssa.flowerybouquet.validator;
 
-public interface ProductValidatorError {
+public class ProductValidatorError {
 
 	public static final String INVALID_PRODUCT_NULL = "Object cannot be NULL";// object null error massage
 	public static final String INVALID_PRODUCT_ID = "Id cannot be NULL";// Id null error massage

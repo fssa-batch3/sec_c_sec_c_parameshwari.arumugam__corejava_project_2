@@ -23,8 +23,8 @@ class TestProductService {
  
 	public Product getProduct1() {
 
-		Product product = new Product(4, "RedroseBouquet", "https://iili.io/Hijmt2a.jpg", 800,
-				"Anniversary Bouquet with Cake");
+		Product product = new Product(2, "Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 800,
+				"Anniversary");
 		return product;
 
 	}
@@ -59,10 +59,10 @@ class TestProductService {
 	 void testDeleteProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.deleteProduct(1));
+		Assertions.assertTrue(productService.deleteProduct(24));
 	}
 
-	@Test
+	@Test 
 
 	 void testgetAllProductDetails() throws DAOException, SQLException {
 		Product product = getProduct();

@@ -41,14 +41,14 @@ public class ConnectionUtil {
 			throw new RuntimeException("Unable to connect to the database");
 		}
 		return con; 
-	}
+	} 
 
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 
 		try {
 			if (rs != null) {
 				rs.close();
-			}
+			} 
 			if (stmt != null) {
 				stmt.close();
 			}

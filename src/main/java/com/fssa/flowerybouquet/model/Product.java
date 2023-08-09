@@ -12,7 +12,7 @@ public class Product {
 	public Product(String productName, String productImageURL, double productPrice, String productCatagory) {
 
 		this.productName = productName; 
-		this.productImageURL = productImageURL;
+		this.productImageURL = productImageURL; 
 		this.productPrice = productPrice;
 		this.productCatagory = productCatagory;
 //		this.productRatings = productRatings; 
@@ -34,7 +34,7 @@ public class Product {
 	//Default Constructor
 	
 	public Product() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public int getProductId() {
