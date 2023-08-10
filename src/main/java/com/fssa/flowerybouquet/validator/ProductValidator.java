@@ -48,7 +48,7 @@ public class ProductValidator {
 		if (Boolean.FALSE.equals(isMatch)) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME);
 
-		}
+		} 
 
 		return true;
 

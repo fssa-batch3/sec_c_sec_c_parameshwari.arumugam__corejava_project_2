@@ -43,27 +43,23 @@ public class CreateProductDao {
 			throw new InvalidCategoryException(ProductValidatorError.INVALID_PRODUCTID);
 		}
 
-		Connection con = null;
+		String query = "UPDATE product SET name = ? , url = ? , price = ? , category = ? WHERE id = ?";
 
-		try {
+		try (Connection con = ConnectionUtil.getConnection()) {
 
-			String query = "UPDATE product SET name = ? , url = ? , price = ? , category = ? WHERE id = ?";
-			con = ConnectionUtil.getConnection();
+			try (PreparedStatement pst = con.prepareStatement(query)) {
 
-			PreparedStatement pst = con.prepareStatement(query);
-			pst.setInt(5, (product.getProductId()));
-			pst.setString(1, (product.getProductName()));
-			pst.setString(2, product.getProductImageURL());
-			pst.setDouble(3, (product.getProductPrice()));
-			pst.setString(4, product.getProductCatagory());
-			pst.executeUpdate();
-			Logger.info("Product Update");
-		} catch (SQLException e) {
-			throw new DAOException("Error Updating product: ", e);
-		} finally {
-			ConnectionUtil.close(con, null, null);
+				pst.setInt(5, (product.getProductId()));
+				pst.setString(1, (product.getProductName()));
+				pst.setString(2, product.getProductImageURL());
+				pst.setDouble(3, (product.getProductPrice()));
+				pst.setString(4, product.getProductCatagory());
+				pst.executeUpdate();
+				Logger.info("Product Update");
+			} catch (SQLException e) {
+				throw new DAOException("Error Updating product: ", e);
+			}
 		}
-
 		return true;
 
 	}
@@ -75,23 +71,19 @@ public class CreateProductDao {
 			throw new InvalidCategoryException(ProductValidatorError.INVALID_PRODUCTID);
 		}
 
-		Connection con = null;
+		String query = "DELETE FROM product WHERE id = ?";
 
-		try {
+		try (Connection con = ConnectionUtil.getConnection()) {
 
-			String query = "DELETE FROM product WHERE id = ?";
-			con = ConnectionUtil.getConnection();
+			try (PreparedStatement pt = con.prepareStatement(query)) {
 
-			PreparedStatement pt = con.prepareStatement(query);
-			pt.setInt(1, productId);
-			pt.executeUpdate();
-			Logger.info("Product Deleted");
-		} catch (SQLException e) {
-			throw new DAOException("Error Deleting product: ", e);
-		} finally {
-			ConnectionUtil.close(con, null, null);
+				pt.setInt(1, productId);
+				pt.executeUpdate();
+				Logger.info("Product Deleted");
+			} catch (SQLException e) {
+				throw new DAOException("Error Deleting product: ", e);
+			}
 		}
-
 		return true;
 
 	}
