@@ -1,6 +1,6 @@
 ## Database Design - Flowery_Bouquet
 
-## Table: user
+## Table: Product
 
 | Column    | Data Type        | Constraints      |
 |-----------|------------------|------------------|
