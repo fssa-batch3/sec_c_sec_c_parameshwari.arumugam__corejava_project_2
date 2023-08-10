@@ -7,15 +7,13 @@ public class Product {
 	private String productImageURL;
 	private double productPrice;
 	private String productCatagory;
-//	private float productRatings;
 
 	public Product(String productName, String productImageURL, double productPrice, String productCatagory) {
 
-		this.productName = productName; 
-		this.productImageURL = productImageURL; 
+		this.productName = productName;
+		this.productImageURL = productImageURL;
 		this.productPrice = productPrice;
 		this.productCatagory = productCatagory;
-//		this.productRatings = productRatings; 
 
 	}
 
@@ -27,14 +25,13 @@ public class Product {
 		this.productImageURL = productImageURL;
 		this.productPrice = productPrice;
 		this.productCatagory = productCatagory;
-//		this.productRatings = productRatings; 
 
 	}
 
-	//Default Constructor
-	
+	// Default Constructor
+
 	public Product() {
-		
+
 	}
 
 	public int getProductId() {

@@ -12,11 +12,10 @@ public class ProductValidator {
 		if (Product == null) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCT_NULL);
 		}
- 
-		
+
 		productNameValidator(Product.getProductName());
 		productImageValidator(Product.getProductImageURL());
-		productPriceValidator(Product.getProductPrice()); 
+		productPriceValidator(Product.getProductPrice());
 
 		return true;
 
@@ -52,7 +51,7 @@ public class ProductValidator {
 		}
 
 		return true;
- 
+
 	}
 
 	// product image validate
@@ -71,7 +70,7 @@ public class ProductValidator {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTIMAGE);
 
 		}
- 
+
 		return true;
 
 	}

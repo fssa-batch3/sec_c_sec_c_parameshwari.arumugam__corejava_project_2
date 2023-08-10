@@ -16,7 +16,7 @@ public class CreateProductDao {
 	public static boolean addProduct(Product product) throws DAOException, SQLException {
 
 		Connection con = null;
-   
+
 		try {
 
 			String query = "INSERT INTO product (id, name, url, price, category) VALUES (?, ?, ?, ?, ?)";
@@ -24,14 +24,13 @@ public class CreateProductDao {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 
 			preparedStatement.setInt(1, (product.getProductId()));
-			preparedStatement.setString(2, product.getProductName()); 
+			preparedStatement.setString(2, product.getProductName());
 			preparedStatement.setString(3, product.getProductImageURL());
 			preparedStatement.setDouble(4, (product.getProductPrice()));
 			preparedStatement.setString(5, product.getProductCatagory());
 			preparedStatement.executeUpdate();
 			Logger.info("Product Added");
-		} catch (SQLException ex) { 
-//			ex.printStackTrace();
+		} catch (SQLException ex) {
 			throw new DAOException("Add Product Method is Failed");
 		}
 
@@ -104,7 +103,8 @@ public class CreateProductDao {
 
 	// read product query
 
-	public static boolean getAllProductDetails() throws DAOException, SQLException {
+	public static boolean getAllProductDetails() throws SQLException {
+
 		try (Connection con = ConnectionUtil.getConnection()) {
 			final String query = "SELECT * FROM product";
 			try (Statement st = con.createStatement()) {
@@ -119,11 +119,9 @@ public class CreateProductDao {
 			}
 		} catch (Exception ex) {
 			Logger.info(ex.getMessage());
-			throw new SQLException("Get All Product Details Method Is Failded");
+			throw new SQLException("Get All Product Details Method Is Failed");
 		}
-
-		return true; 
+		return true;
 	}
 
-	
 }

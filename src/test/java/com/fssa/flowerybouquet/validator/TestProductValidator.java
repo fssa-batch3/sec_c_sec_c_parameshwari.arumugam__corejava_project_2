@@ -6,61 +6,60 @@ import org.junit.jupiter.api.Test;
 import com.fssa.flowerybouquet.dao.InvalidCategoryException;
 import com.fssa.flowerybouquet.model.Product;
 
-public class TestProductValidator {
- 
+class TestProductValidator {
+
 	Product product = new Product(1, "RedRoseBouquet", "https://iili.io/Hijmt2a.jpg", 1000.0, "Anniversary");
 
 	// Product object valide.
 	@Test
-	 void testValidProduct() { 
+	void testValidProduct() {
 		Assertions.assertTrue(ProductValidator.validate(product));
 	}
 
 	// Product object Invalide.
- 
-	
+
 	@Test
-	 void testProductValidator() {
-  
+	void testProductValidator() {
+
 		try {
- 
+
 			ProductValidator.validate(null);
 		} catch (IllegalArgumentException e) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCT_NULL, e.getMessage());
 		}
 	}
- 
+
 	// 2---test case for product id
 
 	@Test
 
-	 void testValidProductId() {
+	void testValidProductId() {
 		int productId = 55; // valid product id
 		Assertions.assertTrue(ProductValidator.validateProductId(productId));
 	}
 
 	@Test
 
-	 void testInValidProductId() {
+	void testInValidProductId() {
 		try {
 			int productId = -5; // Invalid product id
 			ProductValidator.validateProductId(productId);
 		} catch (IllegalArgumentException ex) {
-			Assertions.assertEquals(ex.getMessage(), ProductValidatorError.INVALID_PRODUCT_ID);
+			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCT_ID, ex.getMessage());
 		}
 	}
 
 	// product validname validator.
 
 	@Test
-	 void testValidName() {
+	void testValidName() {
 		Assertions.assertTrue(ProductValidator.productNameValidator("RedRoseBouquet"));
 	}
 
 	// product invalidname validator.
 
 	@Test
-	 void testInvalidName() {
+	void testInvalidName() {
 
 		try {
 
@@ -84,14 +83,14 @@ public class TestProductValidator {
 	// product validImage validator.
 
 	@Test
-	 void testValidIamge() {
+	void testValidIamge() {
 		Assertions.assertTrue(ProductValidator.productImageValidator("https://iili.io/HZHkOzl.jpg"));
 	}
 
 	// product InvalidImage validator.
 
 	@Test
-	 void testInvalidIamge() {
+	void testInvalidIamge() {
 		try {
 			ProductValidator.productImageValidator("https://iili.io/HZHkOzl.https");
 			Assertions.fail("Validate image failed");
@@ -112,13 +111,13 @@ public class TestProductValidator {
 
 	// product validPrice validator.
 	@Test
-	 void testValidPrice() {
+	void testValidPrice() {
 		Assertions.assertTrue(ProductValidator.productPriceValidator(501));
 	}
 	// product InvalidPrice validator.
 
 	@Test
-	 void testInvalidPrice() {
+	void testInvalidPrice() {
 		try {
 			ProductValidator.productPriceValidator(100);
 			Assertions.fail("Validateprice failed");
@@ -128,7 +127,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testCategory() {
+	void testCategory() {
 
 		String mainCategory = "Anniversary";
 		Assertions.assertTrue(EnumsValidator.isValidMainCategory(mainCategory));
@@ -142,7 +141,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testInvalidCategory() {
+	void testInvalidCategory() {
 
 		try {
 			EnumsValidator.isValidMainCategory(null);
@@ -161,7 +160,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testAnniversaryCategory() {
+	void testAnniversaryCategory() {
 
 		Product p = new Product();
 		p.setProductCatagory("Bouquet with cake");
@@ -171,7 +170,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testInvalidAnniversayCategory() {
+	void testInvalidAnniversayCategory() {
 
 		try {
 			EnumsValidator.isValidAnniversaryCategory(null);
@@ -190,7 +189,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testBirthdayCategory() {
+	void testBirthdayCategory() {
 
 		String birthdayCategory = "Bouquet";
 		Assertions.assertTrue(EnumsValidator.isValidBirthdayCategory(birthdayCategory));
@@ -198,7 +197,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testInvalidBirthdayCategory() {
+	void testInvalidBirthdayCategory() {
 
 		try {
 			EnumsValidator.isValidBirthdayCategory(null);
@@ -217,7 +216,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testFlowersCategory() {
+	void testFlowersCategory() {
 
 		String flowersCategory = "Red bouquet";
 		Assertions.assertTrue(EnumsValidator.isValidFlowersCategory(flowersCategory));
@@ -225,7 +224,7 @@ public class TestProductValidator {
 	}
 
 	@Test
-	 void testInvalidFlowersCategory() {
+	void testInvalidFlowersCategory() {
 
 		try {
 			EnumsValidator.isValidFlowersCategory(null);
@@ -245,7 +244,7 @@ public class TestProductValidator {
 
 	// Validate Getter and Setters
 	@Test
-	 void testValidProductUsingGtAndSt() {
+	void testValidProductUsingGtAndSt() {
 		Product p = new Product();
 		p.setProductId(1);
 		p.setProductName("RedRoseBouquet");

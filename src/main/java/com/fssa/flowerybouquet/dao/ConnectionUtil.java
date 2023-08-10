@@ -9,19 +9,18 @@ import java.sql.Statement;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConnectionUtil {
-	
-	  private ConnectionUtil() {
-	        // Private constructor to prevent instantiation
-	        throw new UnsupportedOperationException("Cannot instantiate this class");
-	    }
 
+	private ConnectionUtil() {
+		// Private constructor to prevent instantiation
+		throw new UnsupportedOperationException("Cannot instantiate this class");
+	}
 
 	public static Connection getConnection() {
 		Connection con = null;
 
 		String url;
 		String userName;
-		String passWord; 
+		String passWord;
 
 		if (System.getenv("CI") != null) {
 			url = System.getenv("DATABASE_HOST");
@@ -40,15 +39,15 @@ public class ConnectionUtil {
 		} catch (Exception e) {
 			throw new RuntimeException("Unable to connect to the database");
 		}
-		return con; 
-	} 
+		return con;
+	}
 
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 
 		try {
 			if (rs != null) {
 				rs.close();
-			} 
+			}
 			if (stmt != null) {
 				stmt.close();
 			}

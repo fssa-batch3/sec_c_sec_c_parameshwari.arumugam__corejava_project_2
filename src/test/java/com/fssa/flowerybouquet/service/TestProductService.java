@@ -18,13 +18,12 @@ class TestProductService {
 
 				"Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
 		return product;
- 
+
 	}
- 
+
 	public Product getProduct1() {
 
-		Product product = new Product(2, "Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 800,
-				"Anniversary");
+		Product product = new Product(2, "Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 800, "Anniversary");
 		return product;
 
 	}
@@ -33,14 +32,14 @@ class TestProductService {
 
 		ProductValidator productValidator = new ProductValidator();
 		CreateProductDao createproductdao = new CreateProductDao();
-		ProductService productService = new ProductService(productValidator, createproductdao);
+		ProductService productService = new ProductService();
 		return productService;
 
-	} 
+	}
 
 	@Test
 
-	 void testAddProduct() throws DAOException, SQLException {
+	void testAddProduct() throws DAOException, SQLException {
 		Product product = getProduct();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.addProduct(product));
@@ -48,7 +47,7 @@ class TestProductService {
 
 	@Test
 
-	 void testUpdateProduct() throws DAOException, SQLException {
+	void testUpdateProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.updateProduct(product));
@@ -56,15 +55,15 @@ class TestProductService {
 
 	@Test
 
-	 void testDeleteProduct() throws DAOException, SQLException {
+	void testDeleteProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.deleteProduct(24));
+		Assertions.assertTrue(productService.deleteProduct(36));
 	}
 
-	@Test 
+	@Test
 
-	 void testgetAllProductDetails() throws DAOException, SQLException {
+	void testgetAllProductDetails() throws DAOException, SQLException {
 		Product product = getProduct();
 		ProductService productService = getProductService();
 		Assertions.assertTrue(productService.getAllProductDetails());

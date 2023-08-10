@@ -47,9 +47,9 @@ class TestProductDao {
 
 	}
 
-	// Test the addProduct method with a valid Product 
+	// Test the addProduct method with a valid Product
 	@Test
-	void testValidAddProduct() throws SQLException, DAOException {
+	void testValidAddProduct() throws DAOException, SQLException {
 		Assertions.assertTrue(CreateProductDao.addProduct(validProduct1()));
 	}
 
@@ -93,9 +93,9 @@ class TestProductDao {
 		} catch (InvalidCategoryException ex) {
 			Assertions.assertEquals(ProductValidatorError.INVALID_PRODUCTID, ex.getMessage());
 
-		} 
+		}
 	}
- 
+
 	// Test the Delete method with an invalid Product
 	@Test
 	void testInvalidDeletAppointment() throws SQLException, DAOException {
