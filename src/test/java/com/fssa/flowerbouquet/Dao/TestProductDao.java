@@ -58,13 +58,13 @@ class TestProductDao {
 	void testValidUpdateProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.updateProduct(validProduct()));
 	}
-
+ 
 	// Test the deleteProduct method with a valid Product ID
 	@Test
 	void testValidDeleteProduct() throws SQLException, DAOException {
 		Assertions.assertTrue(CreateProductDao.deleteProduct(validProduct().getProductId()));
 	}
-
+ 
 	// Test the getAllProductDetails method to get all product details
 	@Test
 	void testValidGetProductDetails() throws SQLException, DAOException {

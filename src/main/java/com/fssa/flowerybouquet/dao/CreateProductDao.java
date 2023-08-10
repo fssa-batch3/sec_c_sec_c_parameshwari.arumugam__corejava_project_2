@@ -100,7 +100,7 @@ public class CreateProductDao {
 		return true;
 
 	}
-
+ 
 	// read product query
 
 	public static boolean getAllProductDetails() throws SQLException {

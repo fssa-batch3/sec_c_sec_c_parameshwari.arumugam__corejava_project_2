@@ -40,12 +40,12 @@ public class ProductValidator {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME_NULL);
 		}
 
-		String nameregex = "^[A-Za-z ]{10,100}$";
+		String nameregex = "^[a-zA-Z ]{10,100}$";
 		Pattern pattern = Pattern.compile(nameregex);
 		Matcher matcher = pattern.matcher(ProductName);
 		Boolean isMatch = matcher.matches();
 
-		if (!isMatch) {
+		if (Boolean.FALSE.equals(isMatch)) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME);
 
 		}
@@ -66,7 +66,7 @@ public class ProductValidator {
 		Matcher matcher = pattern.matcher(productimage);
 		Boolean isMatch = matcher.matches();
 
-		if (!isMatch) {
+		if (Boolean.FALSE.equals(isMatch)) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTIMAGE);
 
 		}

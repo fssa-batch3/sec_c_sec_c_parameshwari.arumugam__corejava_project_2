@@ -55,7 +55,7 @@ public class ConnectionUtil {
 				conn.close();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

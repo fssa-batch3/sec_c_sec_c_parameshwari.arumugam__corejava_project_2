@@ -8,7 +8,7 @@ import com.fssa.flowerybouquet.model.Product;
 
 class TestProductValidator {
 
-	Product product = new Product(1, "RedRoseBouquet", "https://iili.io/Hijmt2a.jpg", 1000.0, "Anniversary");
+	Product product = new Product(1, "Red Rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1000.0, "Anniversary");
 
 	// Product object valide.
 	@Test
@@ -247,7 +247,7 @@ class TestProductValidator {
 	void testValidProductUsingGtAndSt() {
 		Product p = new Product();
 		p.setProductId(1);
-		p.setProductName("RedRoseBouquet");
+		p.setProductName("Red Rose Bouquet");
 		p.setProductPrice(510);
 		p.setProductImageURL("https://iili.io/Hijmt2a.jpg");
 		p.setProductCatagory("Anniversary");
