@@ -20,7 +20,7 @@ class TestProductService {
 		return product;
 
 	}
- 
+
 	public Product getProduct1() {
 
 		Product product = new Product(2, "Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 800, "Anniversary");
@@ -54,7 +54,7 @@ class TestProductService {
 	}
 
 	@Test
- 
+
 	void testDeleteProduct() throws DAOException, SQLException {
 		Product product = getProduct1();
 		ProductService productService = getProductService();
