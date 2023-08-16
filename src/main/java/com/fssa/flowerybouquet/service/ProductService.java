@@ -8,39 +8,40 @@ import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class ProductService {
-	private static ProductValidator productValidator;
-	private static ProductDao ProductDao;
+//	private static ProductDao productDao;
 
-	public void setDependencies(ProductValidator validator, ProductDao dao) {
-		productValidator = validator;
-		ProductDao = dao; 
-	}  
+//	public void setDependencies(ProductValidator validator, ProductDao dao) {
+//		productValidator = validator;
+//		ProductDao = dao; 
+//	}  
 
 	public boolean addProduct(Product product) throws DAOException, SQLException {
-		if (productValidator.validate(product)) {
-			ProductDao.addProduct(product);
+		if (ProductValidator.validate(product)) {
+			ProductDao productDao = new ProductDao();
+			productDao.addProduct(product);
 		}
-		return true;
+		return true; 
 	}
 
 	public boolean updateProduct(Product product) throws DAOException, SQLException {
-		if (productValidator.validate(product)) {
-			ProductDao.updateProduct(product);
+		if (ProductValidator.validate(product)) {
+			ProductDao productDao = new ProductDao();
+			productDao.updateProduct(product);
 		}
 		return true;
 	}
 
 	public boolean deleteProduct(int productId) throws DAOException, SQLException {
-		ProductValidator productValidator = new ProductValidator();
-		if (productValidator.validateProductId(productId)) {
-			ProductDao.deleteProduct(productId);
+		if (ProductValidator.validateProductId(productId)) {
+			ProductDao productDao = new ProductDao();
+			productDao.deleteProduct(productId);
 		}
 		return true;
 	}
 
 	public boolean getAllProductDetails() throws DAOException, SQLException {
-		ProductDao ProductDao = new ProductDao();
-		ProductDao.getAllProductDetails();
+		ProductDao productDao = new ProductDao();
+		productDao.getAllProductDetails();
 		return true;
 	}
 }

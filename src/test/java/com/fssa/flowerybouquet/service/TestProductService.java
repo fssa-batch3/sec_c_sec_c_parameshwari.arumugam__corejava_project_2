@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
- 
+
 import com.fssa.flowerybouquet.dao.DAOException;
 import com.fssa.flowerybouquet.dao.ProductDao;
 import com.fssa.flowerybouquet.model.Product;
@@ -14,9 +14,7 @@ class TestProductService {
 
 	public Product getProduct() {
 
-		Product product = new Product(
-
-				"Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
+		Product product = new Product("Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
 		return product;
 
 	}
@@ -30,8 +28,6 @@ class TestProductService {
 
 	public ProductService getProductService() {
 
-		ProductValidator productValidator = new ProductValidator();
-		ProductDao createproductdao = new ProductDao();
 		ProductService productService = new ProductService();
 		return productService;
 
@@ -40,9 +36,8 @@ class TestProductService {
 	@Test
 
 	void testAddProduct() throws DAOException, SQLException {
-		Product product = getProduct();
-		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.addProduct(product));
+//		Product product = getProduct();
+		Assertions.assertTrue(getProductService().addProduct(getProduct()));
 	}
 
 	@Test
