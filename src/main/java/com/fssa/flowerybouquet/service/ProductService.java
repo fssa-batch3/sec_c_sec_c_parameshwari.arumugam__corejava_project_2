@@ -2,45 +2,45 @@ package com.fssa.flowerybouquet.service;
 
 import java.sql.SQLException;
 
-import com.fssa.flowerybouquet.dao.CreateProductDao;
 import com.fssa.flowerybouquet.dao.DAOException;
+import com.fssa.flowerybouquet.dao.ProductDao;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class ProductService {
 	private static ProductValidator productValidator;
-	private static CreateProductDao createProductDao;
+	private static ProductDao ProductDao;
 
-	public static void setDependencies(ProductValidator validator, CreateProductDao dao) {
+	public void setDependencies(ProductValidator validator, ProductDao dao) {
 		productValidator = validator;
-		createProductDao = dao;
-	}
+		ProductDao = dao; 
+	}  
 
-	public static boolean addProduct(Product product) throws DAOException, SQLException {
+	public boolean addProduct(Product product) throws DAOException, SQLException {
 		if (productValidator.validate(product)) {
-			createProductDao.addProduct(product);
+			ProductDao.addProduct(product);
 		}
 		return true;
 	}
 
-	public static boolean updateProduct(Product product) throws DAOException, SQLException {
+	public boolean updateProduct(Product product) throws DAOException, SQLException {
 		if (productValidator.validate(product)) {
-			createProductDao.updateProduct(product);
+			ProductDao.updateProduct(product);
 		}
 		return true;
 	}
 
-	public static boolean deleteProduct(int productId) throws DAOException, SQLException {
+	public boolean deleteProduct(int productId) throws DAOException, SQLException {
 		ProductValidator productValidator = new ProductValidator();
 		if (productValidator.validateProductId(productId)) {
-			createProductDao.deleteProduct(productId);
+			ProductDao.deleteProduct(productId);
 		}
 		return true;
 	}
 
-	public static boolean getAllProductDetails() throws DAOException, SQLException {
-		CreateProductDao createProductDao = new CreateProductDao();
-		createProductDao.getAllProductDetails();
+	public boolean getAllProductDetails() throws DAOException, SQLException {
+		ProductDao ProductDao = new ProductDao();
+		ProductDao.getAllProductDetails();
 		return true;
 	}
 }

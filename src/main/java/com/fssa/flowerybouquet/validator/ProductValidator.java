@@ -8,14 +8,14 @@ import com.fssa.flowerybouquet.model.Product;
 public class ProductValidator {
 
 	// Object null validate
-	public static boolean validate(Product Product) throws IllegalArgumentException {
-		if (Product == null) {
+	public static boolean validate(Product product) throws IllegalArgumentException {
+		if (product == null) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCT_NULL);
 		}
 
-		productNameValidator(Product.getProductName());
-		productImageValidator(Product.getProductImageURL());
-		productPriceValidator(Product.getProductPrice());
+		productNameValidator(product.getProductName());
+		productImageValidator(product.getProductImageURL());
+		productPriceValidator(product.getProductPrice());
 
 		return true;
 
@@ -34,36 +34,36 @@ public class ProductValidator {
 
 	// name validate
 
-	public static boolean productNameValidator(String ProductName) throws IllegalArgumentException {
+	public static boolean productNameValidator(String productName) throws IllegalArgumentException {
 
-		if (ProductName == null || ProductName.trim().equals("")) {
+		if (productName == null || productName.trim().equals("")) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME_NULL);
 		}
 
 		String nameregex = "^[a-zA-Z ]{10,100}$";
 		Pattern pattern = Pattern.compile(nameregex);
-		Matcher matcher = pattern.matcher(ProductName);
+		Matcher matcher = pattern.matcher(productName);
 		Boolean isMatch = matcher.matches();
 
 		if (Boolean.FALSE.equals(isMatch)) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME);
 
-		} 
+		}
 
 		return true;
 
 	}
 
 	// product image validate
-	public static boolean productImageValidator(String productimage) throws IllegalArgumentException {
+	public static boolean productImageValidator(String productImage) throws IllegalArgumentException {
 
-		if (productimage == null) {
+		if (productImage == null) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTIMAGE_NULL);
 		}
 
-		String intregex = "(?i)\\b((https?|ftp)://)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?\\.(jpg|jpeg|gif|png|bmp)\\b";
-		Pattern pattern = Pattern.compile(intregex);
-		Matcher matcher = pattern.matcher(productimage);
+		String urlregex = "(?i)\\b((https?|ftp)://)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?\\.(jpg|jpeg|gif|png|bmp)\\b";
+		Pattern pattern = Pattern.compile(urlregex);
+		Matcher matcher = pattern.matcher(productImage);
 		Boolean isMatch = matcher.matches();
 
 		if (Boolean.FALSE.equals(isMatch)) {

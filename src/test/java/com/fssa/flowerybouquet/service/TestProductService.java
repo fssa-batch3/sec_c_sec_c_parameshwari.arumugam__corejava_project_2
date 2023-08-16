@@ -4,12 +4,12 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import com.fssa.flowerybouquet.dao.CreateProductDao;
+ 
 import com.fssa.flowerybouquet.dao.DAOException;
+import com.fssa.flowerybouquet.dao.ProductDao;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidator;
- 
+
 class TestProductService {
 
 	public Product getProduct() {
@@ -31,11 +31,11 @@ class TestProductService {
 	public ProductService getProductService() {
 
 		ProductValidator productValidator = new ProductValidator();
-		CreateProductDao createproductdao = new CreateProductDao();
+		ProductDao createproductdao = new ProductDao();
 		ProductService productService = new ProductService();
 		return productService;
 
-	}
+	} 
 
 	@Test
 
