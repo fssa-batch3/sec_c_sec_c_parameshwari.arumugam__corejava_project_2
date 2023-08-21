@@ -5,12 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
-// Create product Query 
+// Create product Query  
 public class ProductDao {
 
 	public boolean addProduct(Product product) throws DAOException, SQLException {
@@ -27,7 +29,7 @@ public class ProductDao {
 				preparedStatement.setDouble(4, (product.getProductPrice()));
 				preparedStatement.setString(5, product.getProductCatagory());
 				preparedStatement.executeUpdate();
-				Logger.info("Product Added");
+
 			}
 		} catch (SQLException ex) {
 			throw new DAOException("Add Product Method is Failed");
@@ -55,7 +57,7 @@ public class ProductDao {
 				pst.setDouble(3, (product.getProductPrice()));
 				pst.setString(4, product.getProductCatagory());
 				pst.executeUpdate();
-				Logger.info("Product Update");
+
 			} catch (SQLException e) {
 				throw new DAOException("Error Updating product: ", e);
 			}
@@ -79,7 +81,7 @@ public class ProductDao {
 
 				pt.setInt(1, productId);
 				pt.executeUpdate();
-				Logger.info("Product Deleted");
+
 			} catch (SQLException e) {
 				throw new DAOException("Error Deleting product: ", e);
 			}
@@ -90,25 +92,31 @@ public class ProductDao {
 
 	// read product query
 
-	public boolean getAllProductDetails() throws SQLException {
+	public List<Product> getAllProductDetails() throws SQLException {
+
+		List<Product> productList = new ArrayList<>();
 
 		try (Connection con = ConnectionUtil.getConnection()) {
 			final String query = "SELECT * FROM product";
 			try (Statement st = con.createStatement()) {
 				try (ResultSet rs = st.executeQuery(query)) {
 					while (rs.next()) {
-						Logger.info("ID:" + rs.getInt("id") + ",Name :" + rs.getString("name") + ",Price :"
-								+ rs.getDouble("price") + ",URL :" + rs.getString("url") + ",Category :"
-								+ rs.getString("category"));
+						Product product = new Product();
+						product.setProductId(rs.getInt("id"));
+						product.setProductName(rs.getString("name"));
+						product.setProductImageURL(rs.getString("url"));
+						product.setProductPrice(rs.getDouble("price"));
+						product.setProductCatagory(rs.getString("category"));
+						productList.add(product);
 					}
-					Logger.info("Got All Product Details Successfully");
+
 				}
 			}
 		} catch (Exception ex) {
 			Logger.info(ex.getMessage());
 			throw new SQLException("Get All Product Details Method Is Failed");
 		}
-		return true;
+		return productList;
 	}
 
 }

@@ -1,20 +1,21 @@
 package com.fssa.flowerybouquet.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.flowerybouquet.dao.DAOException;
-import com.fssa.flowerybouquet.dao.ProductDao;
+import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
-import com.fssa.flowerybouquet.validator.ProductValidator;
 
 class TestProductService {
 
 	public Product getProduct() {
 
-		Product product = new Product("Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800, "Anniversary Bouquet with Cake");
+		Product product = new Product("Red rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1800,
+				"Anniversary Bouquet with Cake");
 		return product;
 
 	}
@@ -31,7 +32,7 @@ class TestProductService {
 		ProductService productService = new ProductService();
 		return productService;
 
-	} 
+	}
 
 	@Test
 
@@ -59,9 +60,12 @@ class TestProductService {
 	@Test
 
 	void testgetAllProductDetails() throws DAOException, SQLException {
-		Product product = getProduct();
 		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.getAllProductDetails());
+		List<Product> productList = productService.getAllProductDetails();
+		for (Product e : productList) {
+			Logger.info(e);
+		}
+
 	}
 
 }

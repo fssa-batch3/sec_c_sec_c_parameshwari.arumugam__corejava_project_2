@@ -1,6 +1,7 @@
 package com.fssa.flowerbouquet.Dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.flowerybouquet.dao.DAOException;
 import com.fssa.flowerybouquet.dao.InvalidCategoryException;
 import com.fssa.flowerybouquet.dao.ProductDao;
+import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
@@ -71,10 +73,12 @@ class TestProductDao {
 	// Test the getAllProductDetails method to get all product details
 	@Test
 	void testValidGetProductDetails() throws SQLException, DAOException {
-		TestProductDao pd = new TestProductDao();
 		ProductDao productDao = new ProductDao();
-		Assertions.assertTrue(productDao.getAllProductDetails());
-	} 
+		List<Product> productList = productDao.getAllProductDetails();
+		for (Product e : productList) {
+			Logger.info(e);
+		}
+	}
 
 	// Test the addProduct method with an invalid Product
 	@Test
