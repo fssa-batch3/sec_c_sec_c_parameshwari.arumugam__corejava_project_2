@@ -1,9 +1,18 @@
 package com.fssa.flowerybouquet.validator;
 
+/**
+ * This class contains a collection of constant error messages that are used by
+ * the ProductValidator class to indicate different validation issues related to
+ * product attributes. Each error message corresponds to a specific validation
+ * criterion, such as product ID, name, image, price, and category. These
+ * messages are used to provide meaningful feedback when validation fails during
+ * product creation or modification.
+ */
+
 public class ProductValidatorError {
 
-	public static final String INVALID_PRODUCT_NULL = "Object cannot be NULL";// object null error massage
-	public static final String INVALID_PRODUCT_ID = "Id cannot be NULL";// Id null error massage
+	public static final String INVALID_PRODUCT_NULL = "Object cannot be NULL";
+	public static final String INVALID_PRODUCT_ID = "Id cannot be NULL";
 	public static final String INVALID_PRODUCTNAME_NULL = "ProductName cannot be empty or null";
 	public static final String INVALID_PRODUCTNAME = "The name should be in minimum 10 letters max 100 letters";
 	public static final String INVALID_PRODUCTIMAGE_NULL = "ProductImage cannot be null";

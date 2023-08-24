@@ -36,7 +36,7 @@ public class ProductValidator {
 
 	public static boolean productNameValidator(String productName) throws IllegalArgumentException {
 
-		if (productName == null || productName.trim().equals("")) {
+		if (productName == null || "".equals(productName.trim())) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME_NULL);
 		}
 
@@ -46,6 +46,7 @@ public class ProductValidator {
 		Boolean isMatch = matcher.matches();
 
 		if (Boolean.FALSE.equals(isMatch)) {
+			// TODO : Create Custom
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME);
 
 		}

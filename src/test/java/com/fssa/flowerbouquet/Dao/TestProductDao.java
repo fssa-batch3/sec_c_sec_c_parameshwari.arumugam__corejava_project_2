@@ -15,7 +15,7 @@ import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
 class TestProductDao {
 
-	public static Product validProduct() {
+	public static Product validProductWithId() {
 
 		Product product = new Product();
 		product.setProductId(3);
@@ -28,7 +28,7 @@ class TestProductDao {
 
 	}
 
-	public static Product validProduct1() {
+	public static Product validProduct() {
 
 		Product product = new Product();
 
@@ -53,21 +53,21 @@ class TestProductDao {
 	@Test
 	void testValidAddProduct() throws DAOException, SQLException {
 		ProductDao productDao = new ProductDao();
-		Assertions.assertTrue(productDao.addProduct(validProduct1()));
+		Assertions.assertTrue(productDao.addProduct(validProduct()));
 	}
 
 	// Test the updateProduct method with a valid Product
 	@Test
 	void testValidUpdateProduct() throws SQLException, DAOException {
 		ProductDao productDao = new ProductDao();
-		Assertions.assertTrue(productDao.updateProduct(validProduct()));
+		Assertions.assertTrue(productDao.updateProduct(validProductWithId()));
 	}
 
 	// Test the deleteProduct method with a valid Product ID
 	@Test
 	void testValidDeleteProduct() throws SQLException, DAOException {
 		ProductDao productDao = new ProductDao();
-		Assertions.assertTrue(productDao.deleteProduct(validProduct().getProductId()));
+		Assertions.assertTrue(productDao.deleteProduct(validProductWithId().getProductId()));
 	}
 
 	// Test the getAllProductDetails method to get all product details

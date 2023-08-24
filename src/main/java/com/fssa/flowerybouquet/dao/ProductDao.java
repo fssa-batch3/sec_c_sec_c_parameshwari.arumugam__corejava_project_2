@@ -69,10 +69,6 @@ public class ProductDao {
 //Delete product Query	
 	public boolean deleteProduct(int productId) throws DAOException, SQLException {
 
-		if (productId <= 0) {
-			throw new InvalidCategoryException(ProductValidatorError.INVALID_PRODUCTID);
-		}
-
 		String query = "DELETE FROM product WHERE id = ?";
 
 		try (Connection con = ConnectionUtil.getConnection()) {
