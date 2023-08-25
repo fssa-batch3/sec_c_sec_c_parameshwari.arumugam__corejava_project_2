@@ -15,13 +15,12 @@ public class ProductService {
 		if (ProductValidator.validate(product)) {
 			ProductDao productDao = new ProductDao();
 			productDao.addProduct(product);
-			Logger.info("Product Added");
 		}
 		return true;
-	}
+	} 
 
 	public boolean updateProduct(Product product) throws DAOException, SQLException {
-		if (ProductValidator.validate(product)) {
+		if (ProductValidator.validate(product) && ProductValidator.validateProductId(product.getProductId())) {
 			ProductDao productDao = new ProductDao();
 			productDao.updateProduct(product);
 			Logger.info("Product Update");

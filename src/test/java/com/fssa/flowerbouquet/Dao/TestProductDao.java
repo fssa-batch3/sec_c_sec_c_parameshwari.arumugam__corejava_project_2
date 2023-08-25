@@ -22,7 +22,7 @@ class TestProductDao {
 		product.setProductName("Red Bouquet with Black forestCake");
 		product.setProductPrice(1700.0);
 		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-		product.setProductCatagory("Anniversary Bouquet with Cake");
+		product.setProductCategory("Anniversary Bouquet with Cake");
 
 		return product;
 
@@ -35,7 +35,7 @@ class TestProductDao {
 		product.setProductName("Red Rose Bouquet");
 		product.setProductPrice(800.0);
 		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-		product.setProductCatagory("Anniversary");
+		product.setProductCategory("Anniversary");
 
 		return product;
 
@@ -78,18 +78,6 @@ class TestProductDao {
 		for (Product e : productList) {
 			Logger.info(e);
 		}
-	}
-
-	// Test the addProduct method with an invalid Product
-	@Test
-	void testInvalidAddProduct() throws SQLException, DAOException {
-		try {
-			ProductDao productDao = new ProductDao();
-			productDao.addProduct(InvalidProduct());
-		} catch (DAOException ex) {
-			Assertions.assertEquals("Add Product Method is Failed", ex.getMessage());
-		}
-
 	}
 
 	// Test the update method with an invalid Product

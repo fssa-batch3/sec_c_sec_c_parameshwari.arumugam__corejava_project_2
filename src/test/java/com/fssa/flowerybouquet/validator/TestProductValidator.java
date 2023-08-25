@@ -10,8 +10,8 @@ class TestProductValidator {
 
 	Product product = new Product(1, "Red Rose Bouquet", "https://iili.io/Hijmt2a.jpg", 1000.0, "Anniversary");
 
-	// Product object valide. 
-	@Test 
+	// Product object valide.
+	@Test
 	void testValidProduct() {
 		Assertions.assertTrue(ProductValidator.validate(product));
 	}
@@ -88,7 +88,7 @@ class TestProductValidator {
 	}
 
 	// product InvalidImage validator.
- 
+
 	@Test
 	void testInvalidIamge() {
 		try {
@@ -163,8 +163,8 @@ class TestProductValidator {
 	void testAnniversaryCategory() {
 
 		Product p = new Product();
-		p.setProductCatagory("Bouquet with cake");
-		String anniversaryCategory = p.getProductCatagory();
+		p.setProductCategory("Bouquet with cake");
+		String anniversaryCategory = p.getProductCategory();
 		Assertions.assertTrue(EnumsValidator.isValidAnniversaryCategory(anniversaryCategory));
 
 	}
@@ -250,7 +250,7 @@ class TestProductValidator {
 		p.setProductName("Red Rose Bouquet");
 		p.setProductPrice(510);
 		p.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-		p.setProductCatagory("Anniversary");
+		p.setProductCategory("Anniversary");
 
 		Assertions.assertTrue(ProductValidator.validate(p));
 	}

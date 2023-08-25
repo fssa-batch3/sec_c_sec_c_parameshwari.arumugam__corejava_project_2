@@ -16,23 +16,21 @@ import com.fssa.flowerybouquet.validator.ProductValidatorError;
 public class ProductDao {
 
 	public boolean addProduct(Product product) throws DAOException, SQLException {
-
-		String query = "INSERT INTO product (id, name, url, price, category) VALUES (?, ?, ?, ?, ?)";
-
+		
 		try (Connection con = ConnectionUtil.getConnection()) {
+			String query = "INSERT INTO product (name, url, price, category) VALUES (?, ?, ?, ?)";
 
 			try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
 
-				preparedStatement.setInt(1, (product.getProductId()));
-				preparedStatement.setString(2, product.getProductName());
-				preparedStatement.setString(3, product.getProductImageURL());
-				preparedStatement.setDouble(4, (product.getProductPrice()));
-				preparedStatement.setString(5, product.getProductCatagory());
+				preparedStatement.setString(1, product.getProductName());
+				preparedStatement.setString(2, product.getProductImageURL());
+				preparedStatement.setDouble(3, product.getProductPrice());
+				preparedStatement.setString(4, product.getProductCategory());
 				preparedStatement.executeUpdate();
-
+				
 			}
 		} catch (SQLException ex) {
-			throw new DAOException("Add Product Method is Failed");
+			throw new DAOException("Add Product Method is Failed" + ex.getMessage());
 		}
 
 		return true;
@@ -55,7 +53,7 @@ public class ProductDao {
 				pst.setString(1, (product.getProductName()));
 				pst.setString(2, product.getProductImageURL());
 				pst.setDouble(3, (product.getProductPrice()));
-				pst.setString(4, product.getProductCatagory());
+				pst.setString(4, product.getProductCategory());
 				pst.executeUpdate();
 
 			} catch (SQLException e) {
@@ -102,7 +100,7 @@ public class ProductDao {
 						product.setProductName(rs.getString("name"));
 						product.setProductImageURL(rs.getString("url"));
 						product.setProductPrice(rs.getDouble("price"));
-						product.setProductCatagory(rs.getString("category"));
+						product.setProductCategory(rs.getString("category"));
 						productList.add(product);
 					}
 
