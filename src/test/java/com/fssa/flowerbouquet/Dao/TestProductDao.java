@@ -82,7 +82,7 @@ class TestProductDao {
 
 	// Test the update method with an invalid Product
 	@Test
-	void testInvalidUpdateAppointment() throws SQLException, DAOException {
+	void testInvalidUpdateProduct() throws SQLException, DAOException {
 		try {
 			Product product = new Product();
 			ProductDao productDao = new ProductDao();
@@ -96,7 +96,7 @@ class TestProductDao {
 
 	// Test the Delete method with an invalid Product
 	@Test
-	void testInvalidDeletAppointment() throws SQLException, DAOException {
+	void testInvalidDeletProduct() throws SQLException, DAOException {
 		try {
 			ProductDao productDao = new ProductDao();
 			productDao.deleteProduct(InvalidProduct().getProductId());
