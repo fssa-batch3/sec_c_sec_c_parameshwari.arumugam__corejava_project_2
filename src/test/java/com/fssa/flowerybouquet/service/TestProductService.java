@@ -49,10 +49,10 @@ class TestProductService {
 	public Product updateProductWithId() {
 
 		Product product = new Product();
-		product.setProductId(5);
+		product.setProductId(1);
 		product.setProductName("Red Bouquet with Black forestCake");
 		product.setProductPrice(1700.0);
-		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
+		product.setProductImageURL("https://iili.io/H8VCTru.jpg");
 		product.setProductCategory("Anniversary Bouquet with Cake");
 
 		return product;
