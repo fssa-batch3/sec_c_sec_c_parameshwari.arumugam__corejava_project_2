@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.fssa.flowerybouquet.dao.DAOException;
 import com.fssa.flowerybouquet.dao.ProductDao;
-import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
+import com.fssa.flowerybouquet.util.Logger;
 import com.fssa.flowerybouquet.validator.ProductValidator;
 
 public class ProductService {

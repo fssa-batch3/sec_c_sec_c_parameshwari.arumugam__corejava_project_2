@@ -8,8 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
+import com.fssa.flowerybouquet.util.ConnectionUtil;
+import com.fssa.flowerybouquet.util.Logger;
 import com.fssa.flowerybouquet.validator.ProductValidatorError;
 
 // Create product Query  

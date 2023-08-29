@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.flowerybouquet.dao.DAOException;
-import com.fssa.flowerybouquet.logger.Logger;
 import com.fssa.flowerybouquet.model.Product;
+import com.fssa.flowerybouquet.util.Logger;
 
 /**
  * This class contains JUnit test methods to verify the functionality of the
@@ -29,10 +29,10 @@ class TestProductService {
 	public Product getProduct() {
 
 		Product product = new Product();
-		product.setProductName("Red Bouquet with Black forestCake");
+		product.setProductName("Lovely Pink Bouquet");
 		product.setProductPrice(900);
-		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
-		product.setProductCategory("Anniversary Bouquet with Cake");
+		product.setProductImageURL("https://iili.io/H8VCTru.jpg");
+		product.setProductCategory("AnniversaryBouquet");
 
 		return product;
 
@@ -49,7 +49,7 @@ class TestProductService {
 	public Product updateProductWithId() {
 
 		Product product = new Product();
-		product.setProductId(1);
+		product.setProductId(5);
 		product.setProductName("Red Bouquet with Black forestCake");
 		product.setProductPrice(1700.0);
 		product.setProductImageURL("https://iili.io/Hijmt2a.jpg");
@@ -104,12 +104,12 @@ class TestProductService {
 	 * @throws DAOException If there's an issue with the data access layer.
 	 * @throws SQLException If an SQL-related error occurs.
 	 */
-	@Test
+	@Test 
 
 	void testDeleteProduct() throws DAOException, SQLException {
 		Product product = updateProductWithId();
 		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.deleteProduct(4));
+		Assertions.assertTrue(productService.deleteProduct(1));
 	}
 
 	/**
