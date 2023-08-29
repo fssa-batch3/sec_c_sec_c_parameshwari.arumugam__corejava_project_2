@@ -14,7 +14,7 @@ public class Product {
 				+ productImageURL + ", productPrice=" + productPrice + ", productCatagory=" + productCategory + "]";
 	}
 
-	public Product(String productName, String productImageURL, double productPrice, String productCatagory) {
+	public Product(String productName, String productImageURL, double productPrice,  String productCategory) {
 
 		this.productName = productName;
 		this.productImageURL = productImageURL;
@@ -24,7 +24,7 @@ public class Product {
 	}
 
 	public Product(int productId, String productName, String productImageURL, double productPrice,
-			String productCatagory) {
+			 String productCategory) {
 
 		this.productId = productId;
 		this.productName = productName;
