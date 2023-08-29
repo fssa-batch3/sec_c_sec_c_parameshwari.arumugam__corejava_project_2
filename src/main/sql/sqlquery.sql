@@ -1,8 +1,0 @@
-
-CREATE TABLE IF NOT EXISTS product (
-    id  INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    price VARCHAR(50) NOT NULL,
-    url VARCHAR(100) NOT NULL,
-    category VARCHAR(50) NOT NULL
-    ); 
