@@ -61,7 +61,7 @@ public class ProductValidator {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTIMAGE_NULL);
 		}
 
-		String urlregex = "(http)?s?:?(\\/\\/[^\"']*\\.(?:png|jpg|jpeg|gif|png|svg|webp))";
+		String urlregex = "https?://[^\"']*\\.(?:png|jpe?g|gif|svg|webp)";
 		Pattern pattern = Pattern.compile(urlregex);
 		Matcher matcher = pattern.matcher(productImage);
 		Boolean isMatch = matcher.matches();
