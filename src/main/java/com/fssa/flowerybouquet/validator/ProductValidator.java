@@ -46,7 +46,6 @@ public class ProductValidator {
 		Boolean isMatch = matcher.matches();
 
 		if (Boolean.FALSE.equals(isMatch)) {
-			// TODO : Create Custom
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTNAME);
 
 		}
@@ -62,7 +61,7 @@ public class ProductValidator {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCTIMAGE_NULL);
 		}
 
-		String urlregex = "(?i)\\b((https?|ftp)://)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?\\.(jpg|jpeg|gif|png|bmp)\\b";
+		String urlregex = "(http)?s?:?(\\/\\/[^\"']*\\.(?:png|jpg|jpeg|gif|png|svg|webp))";
 		Pattern pattern = Pattern.compile(urlregex);
 		Matcher matcher = pattern.matcher(productImage);
 		Boolean isMatch = matcher.matches();

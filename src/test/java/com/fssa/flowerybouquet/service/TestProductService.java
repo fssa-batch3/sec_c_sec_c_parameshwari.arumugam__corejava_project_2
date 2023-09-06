@@ -29,9 +29,9 @@ class TestProductService {
 	public Product getProduct() {
 
 		Product product = new Product();
-		product.setProductName("Lovely Pink Bouquet");
-		product.setProductPrice(900);
-		product.setProductImageURL("https://iili.io/H8VCTru.jpg");
+		product.setProductName("Love Bouquet");
+		product.setProductPrice(650);
+		product.setProductImageURL("https://iili.io/H8VBZdJ.jpg");
 		product.setProductCategory("AnniversaryBouquet");
 
 		return product;
@@ -49,11 +49,11 @@ class TestProductService {
 	public Product updateProductWithId() {
 
 		Product product = new Product();
-		product.setProductId(1);
-		product.setProductName("Red Bouquet with Black forestCake");
-		product.setProductPrice(1700.0);
-		product.setProductImageURL("https://iili.io/H8VCTru.jpg");
-		product.setProductCategory("Anniversary Bouquet with Cake");
+		product.setProductId(5);
+		product.setProductName("Lovely Bouquet");
+		product.setProductPrice(800.0);
+		product.setProductImageURL("https://iili.io/H8V74Xs.jpg");
+		product.setProductCategory("AnniversaryBouquet");
 
 		return product;
 
@@ -109,7 +109,7 @@ class TestProductService {
 	void testDeleteProduct() throws DAOException, SQLException {
 		Product product = updateProductWithId();
 		ProductService productService = getProductService();
-		Assertions.assertTrue(productService.deleteProduct(1));
+		Assertions.assertTrue(productService.deleteProduct(3));
 	}
 
 	/**
