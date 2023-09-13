@@ -25,7 +25,7 @@ public class ProductValidator {
 	public static boolean validateProductId(int id) throws IllegalArgumentException {
 		// ProductId cannot be less than or equal to 0
 		// ProductId cannot more than 500
-		if (id <= 0 || id > 500) {
+		if (id <= 0) {
 			throw new IllegalArgumentException(ProductValidatorError.INVALID_PRODUCT_ID);
 		}
 		return true;

@@ -29,7 +29,7 @@ public class ProductDao {
 				preparedStatement.setString(4, product.getProductCategory());
 				preparedStatement.executeUpdate();
 				
-			}
+			} 
 		} catch (SQLException ex) {
 			throw new DAOException("Add Product Method is Failed" + ex.getMessage());
 		}

@@ -10,7 +10,7 @@ public enum BirthdayBouquetCatagory {
 		this.birthdayCategory = birthdayCategory;
 	} 
 
-	public String getBirthdayBouquetCatagory() {  
+	public String getBirthdayBouquetCatagory() {   
 		return birthdayCategory;
 	}
 	

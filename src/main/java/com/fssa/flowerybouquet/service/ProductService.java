@@ -17,7 +17,7 @@ public class ProductService {
 			productDao.addProduct(product);
 		}
 		return true;
-	} 
+	}
 
 	public boolean updateProduct(Product product) throws DAOException, SQLException {
 		if (ProductValidator.validate(product) && ProductValidator.validateProductId(product.getProductId())) {
