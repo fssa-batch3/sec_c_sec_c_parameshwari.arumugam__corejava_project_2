@@ -9,9 +9,9 @@ public enum BirthdayBouquetCatagory {
 	private BirthdayBouquetCatagory(String birthdayCategory) { 
 		this.birthdayCategory = birthdayCategory;
 	} 
-
+ 
 	public String getBirthdayBouquetCatagory() {   
 		return birthdayCategory;
-	}
+	} 
 	
 }

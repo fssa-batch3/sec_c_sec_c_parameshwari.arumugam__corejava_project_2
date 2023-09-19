@@ -8,7 +8,7 @@ public enum ProductCategory {
 
 	public String getMainCategory() { 
 		return mainCategory;
-  
+   
 	}
 
 	private ProductCategory(String mainCategory) {

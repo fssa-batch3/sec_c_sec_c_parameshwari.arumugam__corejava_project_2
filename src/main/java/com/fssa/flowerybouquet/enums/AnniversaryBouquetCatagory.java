@@ -7,11 +7,11 @@ package com.fssa.flowerybouquet.enums;
 public enum AnniversaryBouquetCatagory {
 
 	// Represents a bouquet that includes a cake along with flowers.
-	BOUQUET_WITH_CAKE("Bouquet with cake"),
+	AnniversaryBouquetWithCake("AnniversaryBouquetWithCake"),
 
 	// Represents a standalone bouquet of flowers for anniversaries.
-	BOUQUET("Bouquet");
-
+	AnniversaryBouquet("AnniversaryBouquet");
+  
 	private final String anniCategory;
 
 	// Constructor to associate a category description with each enum constant.

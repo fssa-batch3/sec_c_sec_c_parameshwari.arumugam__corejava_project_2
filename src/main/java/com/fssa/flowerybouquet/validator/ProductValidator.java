@@ -17,7 +17,7 @@ public class ProductValidator {
 		productImageValidator(product.getProductImageURL());
 		productPriceValidator(product.getProductPrice());
 
-		return true;
+		return true; 
 
 	}
 

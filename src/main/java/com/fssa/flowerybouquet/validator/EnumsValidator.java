@@ -17,7 +17,7 @@ public class EnumsValidator {
 			if (category.getMainCategory().equalsIgnoreCase(mainCategory)) {
 				return true;
 			}
-		}  
+		}
 
 		throw new InvalidCategoryException(ProductValidatorError.INVALID_MAIN_PRODUCTCATEGORY);
 	}

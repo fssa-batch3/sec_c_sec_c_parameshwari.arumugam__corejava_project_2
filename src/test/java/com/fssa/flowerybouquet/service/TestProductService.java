@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.flowerybouquet.dao.DAOException;
+import com.fssa.flowerybouquet.dao.InvalidCategoryException;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.util.Logger;
+import com.google.protobuf.ServiceException;
 
 /**
  * This class contains JUnit test methods to verify the functionality of the
@@ -32,11 +34,11 @@ class TestProductService {
 		product.setProductName("Love Bouquet");
 		product.setProductPrice(650);
 		product.setProductImageURL("https://iili.io/H8VBZdJ.jpg");
-		product.setProductCategory("AnniversaryBouquet");
+		product.setProductCategory("AnniversaryBouquetWithCake");
 
 		return product;
 
-
+ 
 	}
 
 	/**
@@ -51,9 +53,9 @@ class TestProductService {
 		Product product = new Product();
 		product.setProductId(5);
 		product.setProductName("Lovely Bouquet");
-		product.setProductPrice(800.0);
+		product.setProductPrice(1000.0);
 		product.setProductImageURL("https://iili.io/H8V74Xs.jpg");
-		product.setProductCategory("AnniversaryBouquet");
+		product.setProductCategory("AnniversaryBouquetWithCake");
 
 		return product;
 
@@ -130,6 +132,19 @@ class TestProductService {
 			Logger.info(e);
 		}
 
+	}
+	
+	@Test
+	void testFindProductByCategory() throws ServiceException, DAOException, SQLException, InvalidCategoryException {
+		try {
+			List<Product> productList = ProductService.findAllProductByCategory("AnniversaryBouquet");
+			for (Product url : productList) {
+				Logger.info(url);
+			} 
+			Assertions.assertNotNull(productList);
+		} catch (ServiceException e) { 
+			Logger.info(e.getMessage());
+		}
 	}
 
 }

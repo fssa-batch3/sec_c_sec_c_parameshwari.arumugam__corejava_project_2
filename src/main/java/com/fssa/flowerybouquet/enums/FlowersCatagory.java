@@ -10,7 +10,7 @@ public enum FlowersCatagory {
 	private FlowersCatagory(String flowersCategory) {
 		this.flowersCategory = flowersCategory; 
 	} 
-
+ 
 	public String getFlowersCatagory() {
 		return flowersCategory;
 	}

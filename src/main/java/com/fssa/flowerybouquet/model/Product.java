@@ -7,7 +7,7 @@ public class Product {
 	private String productImageURL;
 	private double productPrice;
 	private String productCategory;
-
+ 
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productImageURL="
