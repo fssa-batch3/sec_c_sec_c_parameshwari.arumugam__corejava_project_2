@@ -6,8 +6,6 @@ import java.util.regex.Pattern;
 import com.fssa.flowerybouquet.exception.InvalidUserException;
 import com.fssa.flowerybouquet.model.User;
 
-
-
 public class UserValidator {
 
 	public static boolean validate(User user) throws InvalidUserException {
@@ -34,10 +32,10 @@ public class UserValidator {
 
 	private static void firstNameValidator(String firstName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	private static boolean passwordValidator(String password) throws InvalidUserException {
+	public static boolean passwordValidator(String password) throws InvalidUserException {
 		if (password == null) {
 			throw new InvalidUserException("password is invalid");
 		}
@@ -91,10 +89,10 @@ public class UserValidator {
 			throw new InvalidUserException("password is invalid");
 		}
 
-		return true;		
+		return true;
 	}
 
-	static boolean validateUserFirstName(String firstname) throws InvalidUserException {
+	public static boolean validateUserFirstName(String firstname) throws InvalidUserException {
 		firstname = firstname.trim();
 
 		if (firstname == null) {
@@ -119,7 +117,7 @@ public class UserValidator {
 
 		return true;
 	}
-	
+
 //	// lastName validate
 //	public static boolean lastNameValidator(String lastName) throws IllegalArgumentException {
 //
@@ -137,10 +135,8 @@ public class UserValidator {
 //
 //	} 
 
-
-	
-	//email validate
-	public static boolean emailValidator(String email) throws IllegalArgumentException {
+	// email validate
+	public static boolean emailValidator(String email) throws InvalidUserException {
 
 		String emailregex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 		Pattern pattern = Pattern.compile(emailregex);
@@ -148,23 +144,21 @@ public class UserValidator {
 		Boolean isMatch = matcher.matches();
 
 		if (!isMatch) {
-			throw new IllegalArgumentException("The email is invalid");
+			throw new InvalidUserException("The email is invalid");
 
 		}
 
 		return true;
 	}
 
-
-
-	public static boolean phoneValidator(String password) throws IllegalArgumentException {
+	public static boolean phoneValidator(String password) throws InvalidUserException {
 		String numberregex = "[2-9][0-9]{9}";
 		Pattern pattern = Pattern.compile(numberregex);
 		Matcher matcher = pattern.matcher(password);
 		Boolean isMatch = matcher.matches();
 
 		if (!isMatch) {
-			throw new IllegalArgumentException("The Phonenumber is invalid");
+			throw new InvalidUserException("The Phonenumber is invalid");
 
 		}
 
@@ -172,6 +166,11 @@ public class UserValidator {
 
 	}
 
-	
-	
+	public static boolean validateAddress(String address) throws InvalidUserException {
+		if (address == null || address.isEmpty()) {
+			throw new InvalidUserException("Invalid Address");
+		}
+		return true;
+	}
+
 }

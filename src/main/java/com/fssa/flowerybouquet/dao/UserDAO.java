@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.fssa.flowerybouquet.model.User;
 import com.fssa.flowerybouquet.util.ConnectionUtil;
+import com.fssa.flowerybouquet.util.Logger;
 
 public class UserDAO {
 
@@ -20,6 +21,9 @@ public class UserDAO {
 				psmt.setString(4, user.getPassword());
 				psmt.setString(5, user.getPhonenumber());
 				psmt.setString(6, user.getAddress());
+				psmt.setString(5, user.getState());
+				psmt.setString(6, user.getCity());
+				psmt.setString(6, user.getPincode());
 
 				int rowsAffected = psmt.executeUpdate();
 				return rowsAffected > 0;
@@ -47,33 +51,34 @@ public class UserDAO {
 			}
 		}
 	}
-	
-public boolean userLogin(String emailId, String password) throws DAOException, SQLException {
-		
+
+	public User loginUser(String emailId) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			
-			String selectQuery = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ?";
-			
+			String selectQuery = "SELECT user_id, email,first_name, last_name, password, phone_number,address FROM users WHERE email = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
 				psmt.setString(1, emailId);
-				psmt.setString(2, password);
-
+				Logger.info(emailId);
 				try (ResultSet rs = psmt.executeQuery()) {
 					if (rs.next()) {
-						int count = rs.getInt(1);
-						return count==1 ; // Return true if count is greater than 0 (successful login)
+						User user = new User();
+						user.setId(rs.getInt("user_id"));
+						user.setEmail(rs.getString("email"));
+						user.setFirstName(rs.getString("first_name"));
+						user.setLastName(rs.getString("last_name"));
+						user.setPassword(rs.getString("password"));
+						user.setPhonenumber(rs.getString("phone_number"));
+						user.setAddress(rs.getString("address"));
+						Logger.info(user);
+						return user;
+					} else {
+						throw new DAOException("User not found");
 					}
 				}
 			}
 		} catch (SQLException e) {
-			throw new DAOException("Error while checking login for email: " + emailId, e);
+			throw new DAOException("Database Connection Error: " + e.getMessage());
 		}
-		
-
-		// Return false if no user with the given email and password was found
-		return false;
 	}
-	
 
 	public boolean emailExists(String emailId) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection();
@@ -124,24 +129,39 @@ public boolean userLogin(String emailId, String password) throws DAOException, S
 		}
 		return null; // User not found
 	}
-	
-	public boolean updateUserProfile(User user) throws DAOException {
-		String updateQuery = "UPDATE users SET first_name = ?,last_name = ?, password = ? WHERE email = ?";
-		try (Connection connection = ConnectionUtil.getConnection();
+
+	public boolean updateuser(String email,User user) throws DAOException {
+		ConnectionUtil connectionUtil = new ConnectionUtil();
+		try (Connection connection = connectionUtil.getConnection()) {
+			String getUserQuery = "UPDATE users SET first_name =?,last_name =?,, phone_number =? ,email =? ,password =? ,state =? , city =? , pincode =? ,address =? WHERE email = ? ";
+			try(PreparedStatement psmt = connection.prepareStatement(getUserQuery)){
+				psmt.setString(1, user.getFirstName());
+				psmt.setString(1, user.getLastName());
+				psmt.setString(2, user.getPhonenumber());
+				psmt.setString(3, user.getEmail());
+				psmt.setString(4, user.getPassword());
+				psmt.setString(5, user.getState());
+				psmt.setString(6, user.getCity());
+				psmt.setString(7, user.getPincode());
+				psmt.setString(8, user.getAddress());
+				psmt.setString(9, email);
+
+				int rowAffected = psmt.executeUpdate();
+				Logger.info(user);
 				
-				PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
-
-			psmt.setString(1, user.getFirstName());
-			psmt.setString(2, user.getLastName());
-			psmt.setString(3, user.getPassword());
-
-			int rowsUpdated = psmt.executeUpdate();
-
-			return rowsUpdated > 0;
-
-		} catch (SQLException e) {
-			throw new DAOException("Error updating user profile: " + e.getMessage());
+				if(rowAffected > 0) {
+					Logger.info("Success updated");
+					return true;
+				}
+				else {
+					Logger.info("error while update the row");
+					
+				}
+			}
 		}
+		catch(SQLException e) {
+			throw new DAOException("Error while getting the connection" + e.getMessage());
+		}
+		return false;
 	}
-	
 }

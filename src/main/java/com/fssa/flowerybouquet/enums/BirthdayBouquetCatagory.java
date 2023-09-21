@@ -2,7 +2,7 @@ package com.fssa.flowerybouquet.enums;
 
 public enum BirthdayBouquetCatagory {
    
-	BOUQUET_WITH_CAKE("Bouquet with cake"), BOUQUET("Bouquet");
+	BOUQUET_WITH_CAKE("BirthdayBouquetWithCake"), BOUQUET("BirthdayBouquet");
 
 	private final String birthdayCategory;
 

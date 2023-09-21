@@ -137,7 +137,7 @@ class TestProductService {
 	@Test
 	void testFindProductByCategory() throws ServiceException, DAOException, SQLException, InvalidCategoryException {
 		try {
-			List<Product> productList = ProductService.findAllProductByCategory("AnniversaryBouquet");
+			List<Product> productList = ProductService.findAllProductByCategory("BirthdayBouquetWithCake");
 			for (Product url : productList) {
 				Logger.info(url);
 			} 

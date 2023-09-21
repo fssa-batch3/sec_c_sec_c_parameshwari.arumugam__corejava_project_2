@@ -46,17 +46,13 @@ public class ProductService {
 
 	}
 	public static List<Product> findAllProductByCategory(String productCatagory) throws ServiceException {
-		List<Product> productlist = new ArrayList<>();
-		
-		
 		try {
-			if(EnumsValidator.isValidAnniversaryCategory(productCatagory))
-				productlist = ProductDao.findProductByCategory(productCatagory);
+			return ProductDao.findProductByCategory(productCatagory);
 		} catch (DAOException e) {
 			throw new ServiceException("Error while find All Product By Category: " + e.getMessage());
-		} 
-	return productlist;
+		}
 	}
+	
 	
 	public Product getProductById(int productId) throws SQLException, DAOException {
 		return ProductDao.getProductById(productId); // Get the artist's posts from the database

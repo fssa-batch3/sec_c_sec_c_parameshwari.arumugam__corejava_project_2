@@ -11,7 +11,7 @@ import com.fssa.flowerybouquet.dao.DAOException;
 
 public class ConnectionUtil {
 
-	private ConnectionUtil() {
+	public ConnectionUtil() {
 		// Private constructor to prevent instantiation
 		throw new UnsupportedOperationException("Cannot instantiate this class");
 	}

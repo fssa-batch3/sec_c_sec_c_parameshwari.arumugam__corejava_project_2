@@ -46,19 +46,17 @@ public class UserService {
 	}
 
 	
-	public boolean userLogin(String emailId, String password)
-			throws ServiceException, DAOException, SQLException {
+public User userLogin(String email)throws  ServiceException{
 		
+		UserDAO userDao = new UserDAO();
+		User user = new User();
 		try {
-		if (userDAO.emailExists(emailId)) {
-			return userDAO.userLogin(emailId, password);
-		} 
-		
-		}catch (Exception e) {
-		throw new ServiceException("Error updating user profile: " + e.getMessage());
-	}
-		return false;
-
+			user = userDao.loginUser(email); 
+			return user;
+		}
+		catch(DAOException e) {
+			throw new ServiceException(e.getMessage());
+		}
 	}
 
 	public User getUserByEmail(String emailId) throws ServiceException, SQLException, InvalidUserException {
@@ -76,19 +74,18 @@ public class UserService {
 		return null; // Invalid email format
 	}
 
-	public boolean updateUserProfile(User user) throws ServiceException, SQLException {
+	public boolean userProfileUpdate(String email,User user)throws ServiceException{
+		UserDAO dao = new  UserDAO();
+		UserValidator userValidator = new UserValidator();
 		try {
-			if (UserValidator.validate(user)) {
-				if (userDAO.emailExists(user.getEmail())) {
-					return userDAO.updateUserProfile(user);
-				} else {
-					throw new DAOException("Email not found: " + user.getEmail());
-				}
-			}
-		} catch (DAOException | InvalidUserException e) {
-			throw new ServiceException("Error updating user profile: " + e.getMessage());
+//			userValidator.validate(user);
+			dao.updateuser(email,user);
+			return true;
 		}
-		return false;
+		catch(DAOException | IllegalArgumentException e) {
+			e.printStackTrace();
+			throw new ServiceException(e.getMessage()); 
+		}
 	}
 
 }

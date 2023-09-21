@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fssa.flowerybouquet.enums.ProductCategory;
 import com.fssa.flowerybouquet.model.Product;
 import com.fssa.flowerybouquet.util.ConnectionUtil;
 import com.fssa.flowerybouquet.util.Logger;
@@ -154,10 +153,10 @@ public class ProductDao {
 					if (rs.next()) {
 						product = new Product();
 						product.setProductId(productId);
-						product.setProductName(rs.getString("name"));		
+						product.setProductName(rs.getString("name"));
 						product.setProductPrice(rs.getDouble("price"));
 						product.setProductImageURL(rs.getString("url"));
-						product.setProductCategory(rs.getString("productCatagory").toLowerCase());
+						product.setProductCategory(rs.getString("category").toLowerCase());
 
 					}
 

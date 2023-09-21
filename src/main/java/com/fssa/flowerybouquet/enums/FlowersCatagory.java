@@ -2,8 +2,8 @@ package com.fssa.flowerybouquet.enums;
 
 public enum FlowersCatagory {  
   
-	RED_BOUQUET("Red bouquet"), YELLOW_BOUQUET("Yellow bouquet"), PINK_BOUQUET("Pink bouquet"),
-	MIXEED_BOUQUET("Mixed Bouquet");
+	RED_BOUQUET("RedBouquet"), YELLOW_BOUQUET("YellowBouquet"), PINK_BOUQUET("PinkBouquet"),
+	MIXEED_BOUQUET("MixedBouquet");
   
 	private final String flowersCategory; 
  
