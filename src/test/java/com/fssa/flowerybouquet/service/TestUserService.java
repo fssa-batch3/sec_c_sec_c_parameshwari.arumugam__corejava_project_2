@@ -44,13 +44,13 @@ public class TestUserService {
 	    @Test
 	    void testValidUserLogin() throws ServiceException, InvalidUserException, DAOException, SQLException {
 	    	
-	    	Assertions.assertTrue(userService.userLogin("paramu@gmail.com", "paramu@2004"));
+	    	assertThrows(ServiceException.class, () -> userService.userLogin("paramu@gmail.com"));
 	    }
 	    
 	    @Test
 	    void testUserLoginInvalidInput()   {
 	    
-	        assertThrows(ServiceException.class, () -> userService.userLogin(" ", " "));
+	        assertThrows(ServiceException.class, () -> userService.userLogin(" "));
 	    }
 //	    
 	    

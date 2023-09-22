@@ -22,10 +22,21 @@ public class OrderService {
 
 	}
 
-	public static Order getOrderById(int orderId) throws DAOException, OrderInvalidException, SQLException {
+	public static ArrayList<Order> getOrderById(int orderId) throws DAOException, OrderInvalidException, SQLException {
 
 		OrderDAO orderDao = new OrderDAO();
 		return orderDao.getOrderById(orderId);
+
+	}
+	
+	
+	public static void deleteOrderedProductsByOrderId(int orderId) throws DAOException, OrderInvalidException, SQLException {
+		OrderDAO.deleteOrderedProductsByOrderId(orderId);
+	}
+
+	public static boolean cancelOrder(int orderId) throws DAOException, OrderInvalidException, SQLException {
+		
+	return OrderDAO.cancelOrder(orderId);
 
 	}
 }

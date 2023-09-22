@@ -15,10 +15,25 @@ public class UserValidator {
 //		lastNameValidator(user.getLastName());
 		emailValidator(user.getEmail());
 		passwordValidator(user.getPassword());
+		
 
 		return true;
 	}
 
+	public static boolean validateUpdate(User user) throws InvalidUserException {
+
+		firstNameValidator(user.getFirstName());
+//		lastNameValidator(user.getLastName());
+		emailValidator(user.getEmail());
+		phoneValidator(user.getPhonenumber());
+		validateAddress(user.getAddress());
+		validateState(user.getState());
+		validateCity(user.getCity());
+		validatePincode(user.getPincode());
+		
+		return true;
+	}
+	
 	// id validate
 
 //	public static boolean idValidator(int id) throws IllegalArgumentException {
@@ -167,10 +182,63 @@ public class UserValidator {
 	}
 
 	public static boolean validateAddress(String address) throws InvalidUserException {
-		if (address == null || address.isEmpty()) {
-			throw new InvalidUserException("Invalid Address");
+	    if (address == null || address.isEmpty()) {
+	        throw new InvalidUserException("invalid address");
+	    }
+	    return true;
+	}
+	
+	public static boolean validateState(String state) throws  InvalidUserException {
+		if (state == null) {
+			throw new InvalidUserException("invalid state");
+		}
+
+		// Below the code for REGEX
+		String regex = "^[A-Za-z\\s-]+$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(state);
+		boolean isMatch = matcher.matches();
+
+		if ("".trim().equals(state) || state.trim().length() > 15 || state.trim().length() < 4 || !isMatch) {
+			throw new InvalidUserException("invalid state");
 		}
 		return true;
 	}
 
+	public static boolean validateCity(String city) throws InvalidUserException {
+		if (city == null) {
+			throw new InvalidUserException("invalid city");
+		}
+
+		// Below the code for regex
+		String regex = "^[A-Za-z\\s]+$|^$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(city);
+		boolean isMatch = matcher.matches();
+
+		if ("".trim().equals(city) || city.trim().length() > 15 || city.trim().length() < 4 || !isMatch) {
+			throw new InvalidUserException("invalid city");
+		}
+		return true;
+	}
+
+	
+	public static boolean validatePincode(String pincode) throws InvalidUserException {
+		if (pincode == null) {
+			throw new InvalidUserException("invalid pincode");
+		}
+
+		// below the code for regex
+		String regex = "^\\d{6}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(pincode);
+		boolean isMatch = matcher.matches();
+
+		if ("".trim().equals(pincode) || pincode.trim().length() > 6 || !isMatch) {
+			throw new InvalidUserException("invalid pincode");
+		}
+		return true;
+	}
+
+	
 }

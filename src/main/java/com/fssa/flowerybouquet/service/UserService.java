@@ -74,11 +74,11 @@ public User userLogin(String email)throws  ServiceException{
 		return null; // Invalid email format
 	}
 
-	public boolean userProfileUpdate(String email,User user)throws ServiceException{
+	public boolean userProfileUpdate(String email,User user)throws ServiceException, InvalidUserException{
 		UserDAO dao = new  UserDAO();
 		UserValidator userValidator = new UserValidator();
 		try {
-//			userValidator.validate(user);
+			userValidator.validateUpdate(user);
 			dao.updateuser(email,user);
 			return true;
 		}

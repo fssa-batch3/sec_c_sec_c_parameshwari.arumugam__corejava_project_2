@@ -14,9 +14,12 @@ public class Order {
 	private LocalDate orderedDate;
 	private OrderStatus status;
 	private String address;
+	private String phoneNumber;
+
+	
 
 	public Order(int userID, int orderId, double totalAmount, List<OrderDetail> productsList, LocalDate orderedDate,
-			OrderStatus status, String address) {
+			OrderStatus status, String address, String phoneNumber) {
 		super();
 		this.userID = userID;
 		OrderId = orderId;
@@ -25,6 +28,7 @@ public class Order {
 		this.orderedDate = orderedDate;
 		this.status = status;
 		this.address = address;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Order() {
@@ -87,4 +91,13 @@ public class Order {
 		this.address = address;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	
 }

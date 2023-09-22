@@ -13,7 +13,7 @@ public class UserDAO {
 
 	public boolean userSignIn(User user) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			String insertQuery = "INSERT INTO users (first_name, last_name, email, password , phone_number, address) VALUES (?, ?, ?, ?,?,?)";
+			String insertQuery = "INSERT INTO users (first_name, last_name, email, password , phone_number, address,city,state,pincode) VALUES (?, ?, ?, ?,?,?,?,?,?)";
 			try (PreparedStatement psmt = connection.prepareStatement(insertQuery)) {
 				psmt.setString(1, user.getFirstName());
 				psmt.setString(2, user.getLastName());
@@ -21,9 +21,9 @@ public class UserDAO {
 				psmt.setString(4, user.getPassword());
 				psmt.setString(5, user.getPhonenumber());
 				psmt.setString(6, user.getAddress());
-				psmt.setString(5, user.getState());
-				psmt.setString(6, user.getCity());
-				psmt.setString(6, user.getPincode());
+				psmt.setString(7, user.getState());
+				psmt.setString(8, user.getCity());
+				psmt.setString(9, user.getPincode());
 
 				int rowsAffected = psmt.executeUpdate();
 				return rowsAffected > 0;
@@ -54,7 +54,7 @@ public class UserDAO {
 
 	public User loginUser(String emailId) throws DAOException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			String selectQuery = "SELECT user_id, email,first_name, last_name, password, phone_number,address FROM users WHERE email = ?";
+			String selectQuery = "SELECT user_id, email,first_name, last_name, password, phone_number,address,city,state,pincode FROM users WHERE email = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
 				psmt.setString(1, emailId);
 				Logger.info(emailId);
@@ -68,7 +68,11 @@ public class UserDAO {
 						user.setPassword(rs.getString("password"));
 						user.setPhonenumber(rs.getString("phone_number"));
 						user.setAddress(rs.getString("address"));
+						user.setCity(rs.getString("city"));
+						user.setState(rs.getString("state"));
+						user.setPincode(rs.getString("pincode"));
 						Logger.info(user);
+						Logger.info("kachak");
 						return user;
 					} else {
 						throw new DAOException("User not found");
@@ -130,16 +134,37 @@ public class UserDAO {
 		return null; // User not found
 	}
 
-	public boolean updateuser(String email,User user) throws DAOException {
-		ConnectionUtil connectionUtil = new ConnectionUtil();
-		try (Connection connection = connectionUtil.getConnection()) {
-			String getUserQuery = "UPDATE users SET first_name =?,last_name =?,, phone_number =? ,email =? ,password =? ,state =? , city =? , pincode =? ,address =? WHERE email = ? ";
-			try(PreparedStatement psmt = connection.prepareStatement(getUserQuery)){
+	public static int getUserIdByEmail(String emailId) throws DAOException {
+		int userId = -1; // Default value if the email is not found or an error occurs.
+		try (Connection con = ConnectionUtil.getConnection()) {
+			// SQL query to retrieve the user ID by email.
+			String query = "SELECT user_id FROM users WHERE email=?";
+			try (PreparedStatement psmt = con.prepareStatement(query)) {
+				
+				// Set the email parameter in the PreparedStatement.
+				psmt.setString(1, emailId);
+				try (ResultSet rs = psmt.executeQuery()) {
+					if (rs.next()) {
+						userId = rs.getInt("user_id");
+					}
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e.getMessage());
+		}
+		return userId;
+	}
+	
+	
+	public boolean updateuser(String email, User user) throws DAOException {
+
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String getUserQuery = "UPDATE users SET first_name =?,last_name =?, phone_number =? ,email =?  ,state =? , city =? , pincode =? ,address =? WHERE email = ? ";
+			try (PreparedStatement psmt = connection.prepareStatement(getUserQuery)) {
 				psmt.setString(1, user.getFirstName());
-				psmt.setString(1, user.getLastName());
-				psmt.setString(2, user.getPhonenumber());
-				psmt.setString(3, user.getEmail());
-				psmt.setString(4, user.getPassword());
+				psmt.setString(2, user.getLastName());
+				psmt.setString(3, user.getPhonenumber());
+				psmt.setString(4, user.getEmail());
 				psmt.setString(5, user.getState());
 				psmt.setString(6, user.getCity());
 				psmt.setString(7, user.getPincode());
@@ -148,18 +173,16 @@ public class UserDAO {
 
 				int rowAffected = psmt.executeUpdate();
 				Logger.info(user);
-				
-				if(rowAffected > 0) {
+
+				if (rowAffected > 0) {
 					Logger.info("Success updated");
 					return true;
-				}
-				else {
+				} else {
 					Logger.info("error while update the row");
-					
+
 				}
 			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new DAOException("Error while getting the connection" + e.getMessage());
 		}
 		return false;

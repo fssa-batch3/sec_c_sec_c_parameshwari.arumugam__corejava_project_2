@@ -54,7 +54,7 @@ public class ProductService {
 	}
 	
 	
-	public Product getProductById(int productId) throws SQLException, DAOException {
+	public static Product getProductById(int productId) throws SQLException, DAOException {
 		return ProductDao.getProductById(productId); // Get the artist's posts from the database
 	}
 	
