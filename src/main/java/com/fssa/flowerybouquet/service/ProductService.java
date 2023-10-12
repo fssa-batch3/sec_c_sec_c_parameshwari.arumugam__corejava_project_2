@@ -14,7 +14,7 @@ import com.google.protobuf.ServiceException;
 
 public class ProductService {
 //	
-	public boolean addProduct(Product product) throws DAOException, SQLException {
+	public boolean addProduct(Product product) throws DAOException, SQLException,IllegalArgumentException {
 		if (ProductValidator.validate(product)) {
 			ProductDao productDao = new ProductDao(); 
 			productDao.addProduct(product);

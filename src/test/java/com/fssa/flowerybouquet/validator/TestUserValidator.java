@@ -1,13 +1,11 @@
 //package com.fssa.flowerybouquet.validator;
 //
-//import static org.junit.jupiter.api.Assertions.assertThrows;
-//import static org.junit.jupiter.api.Assertions.assertTrue;
-//
+//import org.junit.jupiter.api.Assertions;
 //import org.junit.jupiter.api.Test;
 //
 //import com.fssa.flowerybouquet.exception.InvalidUserException;
 //
-//public class TestUserValidator {
+// class TestUserValidator {
 //	@Test
 //
 //	void testUserValidator() throws InvalidUserException {
@@ -152,7 +150,7 @@
 //@Test
 //	void testValidUserPhoneNumber() throws InvalidUserException {
 //		Assertions.assertTrue(
-//				UserValidator.phoneNumberValidator("9876543210"));
+//				UserValidator.phoneValidator("9876543210"));
 //	}
 //	/**
 //	 * test for invalid user password when it is null.
@@ -162,7 +160,7 @@
 //
 //	void testInvalidUserPhoneNumber() throws InvalidUserException {
 //		try {
-//			UserValidator.phoneNumberValidator(null);
+//			UserValidator.phoneValidator(null);
 //		} catch (InvalidUserException e) {
 //			Assertions.assertEquals(UserValidateErrors.INVALID_PHONENUMBER_NULL, e.getMessage());
 //		}
@@ -170,7 +168,7 @@
 //		 * test for invalid user password
 //		 */
 //		try {
-//			UserValidator.phoneNumberValidator("jal21");
+//			UserValidator.phoneValidator("jal21");
 //			Assertions.fail(ProductValidateErrors.INVALID_PRODUCTDESCRIPTION);
 //		} catch (InvalidUserException e) {
 //			Assertions.assertEquals(UserValidateErrors.INVALID_PHONENUMBER, e.getMessage());

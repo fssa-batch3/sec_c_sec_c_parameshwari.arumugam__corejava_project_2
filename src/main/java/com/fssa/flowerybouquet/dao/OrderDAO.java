@@ -155,7 +155,7 @@ public class OrderDAO {
 	}
 	
 	public static boolean cancelOrder(int orderId) throws DAOException {
-		String updateQuery = "UPDATE `order` SET status = 'CANCELLED' WHERE order_id = ?";
+		String updateQuery = "UPDATE `orders` SET status = 'CANCELLED' WHERE orderId = ?";
 
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
